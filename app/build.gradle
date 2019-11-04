@@ -42,6 +42,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0'
     implementation 'androidx.fragment:fragment-ktx:1.1.0'
     implementation 'androidx.legacy:legacy-support-core-utils:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha08'
-
+    implementation group: 'com.google.android.material', name: 'material', version: '1.1.0-alpha05'
 }
