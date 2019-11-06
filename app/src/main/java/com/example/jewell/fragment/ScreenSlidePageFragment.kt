@@ -13,12 +13,6 @@ import kotlinx.android.synthetic.main.fragment_screen_slide_page.*
 private const val ARG_TITLE = "arg_title"
 private const val ARG_BG_COLOR = "arg_bg_color"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [ScreenSlidePageFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class ScreenSlidePageFragment : Fragment() {
     private var title: String? = "Default title."
     private var bgColorResId: Int = R.color.blue_inactive

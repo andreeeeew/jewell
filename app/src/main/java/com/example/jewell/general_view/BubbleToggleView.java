@@ -24,11 +24,6 @@ import androidx.core.view.ViewCompat;
 import com.example.jewell.R;
 import com.example.jewell.general_view.util.ViewUtils;
 
-/**
- * BubbleToggleView
- *
- * @author Gaurav Kumar
- */
 public class BubbleToggleView extends RelativeLayout {
 
     private static final String TAG = "BNI_View";

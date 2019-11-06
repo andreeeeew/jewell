@@ -15,12 +15,6 @@ import androidx.annotation.Nullable
 import com.example.jewell.general_view.listener.BubbleNavigationChangeListener
 import java.util.*
 
-/**
- * BubbleNavigationLinearView
- *
- * @author Gaurav Kumar
- */
-
 class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNavigation {
     override fun getCurrentActiveItemPosition(): Int {
         return currentActiveItemPosition

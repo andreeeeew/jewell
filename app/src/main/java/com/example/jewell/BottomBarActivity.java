@@ -14,6 +14,7 @@ import com.example.jewell.adapter.ScreenSlidePagerAdapter;
 import com.example.jewell.fragment.ScreenSlidePageFragment;
 import com.example.jewell.general_view.BubbleNavigationLinearView;
 import com.example.jewell.models.Product;
+import com.example.jewell.view_decorator.TopSpacingItemDecoration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,12 @@ public class BottomBarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        prepareBottomView();
+        initRecyclerView();
+        addDataSet();
+    }
+
+    private void prepareBottomView() {
         ArrayList<ScreenSlidePageFragment> fragList = new ArrayList<>();
         fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.products), R.color.red_inactive));
         fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.inventarisation), R.color.blue_inactive));
@@ -46,38 +53,8 @@ public class BottomBarActivity extends AppCompatActivity {
         bubbleNavigationLinearView.setBadgeValue(2, "7");
         bubbleNavigationLinearView.setBadgeValue(3, "2");
         bubbleNavigationLinearView.setBadgeValue(4, ""); //empty badge
-
-        initRecyclerView();
-        addDataSet();
-
-
-
-        /* DON'T NEED IT */
-//        final ViewPager viewPager = findViewById(R.id.view_pager);
-//        viewPager.setAdapter(pagerAdapter);
-//        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-//            @Override
-//            public void onPageScrolled(int i, float v, int i1) {
-//            }
-//
-//            @Override
-//            public void onPageSelected(int i) {
-//                bubbleNavigationLinearView.setCurrentActiveItem(i);
-//            }
-//
-//            @Override
-//            public void onPageScrollStateChanged(int i) {
-//
-//            }
-//        });
-//
-//        bubbleNavigationLinearView.setNavigationChangeListener(new BubbleNavigationChangeListener() {
-//            @Override
-//            public void onNavigationChanged(View view, int position) {
-//                viewPager.setCurrentItem(position, true);
-//            }
-//        });
     }
+
     private void addDataSet() {
         List<Product> data = DataSource.Companion.createDataSet();
         productAdapter.submitList(data);

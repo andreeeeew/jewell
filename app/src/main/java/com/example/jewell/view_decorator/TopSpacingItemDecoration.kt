@@ -1,4 +1,4 @@
-package com.example.jewell
+package com.example.jewell.view_decorator
 
 import android.graphics.Rect
 import android.view.View
