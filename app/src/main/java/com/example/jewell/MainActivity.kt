@@ -2,61 +2,45 @@ package com.example.jewell
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.jewell.adapter.SimpleRecyclerViewAdapter
-
-
-private lateinit var recyclerView: RecyclerView
-private lateinit var recyclerViewAdapter: RecyclerView.Adapter<*>
-private lateinit var recylerViewLayoutManager: RecyclerView.LayoutManager
-private lateinit var subjects: Array<String>
+import com.example.jewell.adapter.ProductRecyclerViewAdapter
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    private val TAG = "MainActivity"
+    private lateinit var productAdapter: ProductRecyclerViewAdapter
+
+    //vars
+    private val mNames = ArrayList<String>()
+    private val mImageUrls = ArrayList<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val intent = Intent(this, BottomBarActivity::class.java)
         setContentView(R.layout.activity_main)
         startActivity(intent)
+        initRecyclerView()
+        addDataSet()
+        Log.d(TAG, "onCreate: started.")
+    }
 
-        var subjects = arrayOf(
-            "Nougat",
-            "Marshmallow",
-            "Lollipop",
-            "KitKat",
-            "Jelly Bean",
-            "Ice Cream Sandwich",
-            "Gingerbread",
-            "Cupcake",
-            "dunut",
-            "eclair",
-            "Froyo",
-            "Gingerbread",
-            "Honeycomb"
-        )
+    private fun addDataSet() {
+        val data = DataSource.createDataSet()
+        productAdapter.submitList(data)
+    }
 
-        recyclerView = findViewById(R.id.recyclerview) as RecyclerView
-
-        recylerViewLayoutManager = LinearLayoutManager(this)
-        recyclerView.setLayoutManager(recylerViewLayoutManager)
-
-        recyclerViewAdapter = SimpleRecyclerViewAdapter(this@MainActivity, subjects)
-        recyclerView.setAdapter(recyclerViewAdapter)
-
-
-//        val recyclerView = findViewById(R.id.recycler_view) as RecyclerView
-//
-//// Horizontal
-//        OverScrollDecoratorHelper.setUpOverScroll(
-//            recyclerView,
-//            OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL
-//        )
-//// Vertical
-//        OverScrollDecoratorHelper.setUpOverScroll(
-//            recyclerView,
-//            OverScrollDecoratorHelper.ORIENTATION_VERTICAL
-//        )
+    private fun initRecyclerView() {
+        Log.d(TAG, "initRecyclerView: init recyclerview.")
+        productAdapter = ProductRecyclerViewAdapter()
+        recycler_view.apply {
+            layoutManager = LinearLayoutManager(this@MainActivity)
+            adapter = productAdapter
+        }
+//        val recyclerView = findViewById<RecyclerView>(R.id.recycler_view)
+//        val adapter = ProductRecyclerViewAdapter(this, mNames, mImageUrls)
+//        recyclerView.adapter = adapter
+//        recyclerView.layoutManager = LinearLayoutManager(this)
     }
 }

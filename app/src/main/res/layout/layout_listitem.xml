@@ -2,7 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:minWidth="40dp"
+    android:minHeight="40dp"
     android:padding="15dp"
+    android:id="@+id/parent_layout"
     >
 
     <de.hdodenhof.circleimageview.CircleImageView
@@ -14,8 +17,8 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Random text"
         android:id="@+id/image_name"
+        android:text="Random text"
         android:layout_toRightOf="@+id/resource_image"
         android:textColor="#000"
         android:layout_centerVertical="true"
@@ -24,3 +27,4 @@
 
 
 </RelativeLayout>
+<!--Probably problem is in the view itself or in the manager-->
