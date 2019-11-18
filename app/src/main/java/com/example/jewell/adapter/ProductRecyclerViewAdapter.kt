@@ -1,17 +1,28 @@
 package com.example.jewell.adapter
 
+import android.content.Context
+import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.jewell.ProductFullViewActivity
 import com.example.jewell.R
 import com.example.jewell.models.Product
 import kotlinx.android.synthetic.main.layout_product_list_item.view.*
 
 
-class ProductRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProductRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    private var mContext: Context
+
+    constructor(context: Context) : super() {
+        mContext = context
+    }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return ProductViewHolder(
             LayoutInflater.from(parent.context).inflate(R.layout.layout_product_list_item, parent, false)
@@ -25,7 +36,14 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         when (holder) {
             is ProductViewHolder -> {
-                holder.bind(products.get(position))
+                holder.bind(products[position])
+                holder.itemView.setOnClickListener {
+                    Log.d(TAG, "Item was clicked")
+
+                    var intent = Intent(mContext, ProductFullViewActivity::class.java)
+                    intent.putExtra("product", products[position])
+                    mContext.startActivity(intent)
+                }
             }
         }
     }

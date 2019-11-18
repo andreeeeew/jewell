@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="100">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="80"
+        android:id="@+id/image"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/ic_launcher"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/product_label_vertical_disctance">
+        <TextView
+            android:id="@+id/arrival_date_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Arrival date"
+            android:textSize="20dp"
+            android:layout_marginLeft="@dimen/product_label_align_left"
+            android:textColor="@color/product_label"
+            android:layout_weight="9"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:id="@+id/arrival_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="22.10.2017"
+            android:textSize="20dp"
+            android:layout_marginRight="@dimen/product_align_right"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/product_label"
+            android:layout_weight="9"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/product_label_vertical_disctance">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/type_label"
+        android:text="Type"
+        android:textSize="20dp"
+        android:layout_marginLeft="@dimen/product_label_align_left"
+        android:textColor="@color/product_label"
+        android:layout_weight="9"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/type"
+        android:text="White Gold"
+        android:textSize="20dp"
+        android:layout_marginRight="@dimen/product_align_right"
+        android:textColor="@color/product_description"
+        android:layout_weight="9"
+        android:layout_alignParentRight="true"
+        android:gravity="center"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/product_label_vertical_disctance">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/millesimal_label"
+        android:text="Millesimal fineness"
+        android:textSize="20dp"
+        android:layout_marginLeft="@dimen/product_label_align_left"
+        android:textColor="@color/product_label"
+        android:layout_weight="9"
+        android:gravity="center"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/millesimal"
+            android:text="585"
+            android:textSize="20dp"
+            android:layout_marginRight="@dimen/product_align_right"
+            android:textColor="@color/product_label"
+            android:layout_weight="9"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/product_label_vertical_disctance">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/size_label"
+        android:text="Size"
+        android:textSize="20dp"
+        android:layout_marginLeft="@dimen/product_label_align_left"
+        android:textColor="@color/product_label"
+        android:layout_weight="9"
+        android:gravity="center"
+        />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/size"
+            android:text="17.5"
+            android:textSize="20dp"
+            android:layout_marginRight="@dimen/product_align_right"
+            android:textColor="@color/product_label"
+            android:layout_weight="9"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/product_label_vertical_disctance">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/weight_label"
+        android:text="Weight"
+        android:textSize="20dp"
+        android:layout_marginLeft="@dimen/product_label_align_left"
+        android:textColor="@color/product_label"
+        android:layout_weight="9"
+        android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/weight"
+            android:text="11.62"
+            android:textSize="20dp"
+            android:layout_marginRight="@dimen/product_align_right"
+            android:textColor="@color/product_label"
+            android:layout_weight="9"
+            android:layout_alignParentRight="true"
+            android:gravity="center" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/product_label_vertical_disctance">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/retail_price_label"
+        android:text="Retail price"
+        android:textSize="20dp"
+        android:layout_marginLeft="@dimen/product_label_align_left"
+        android:textColor="@color/product_label"
+        android:layout_weight="9"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/retail_price"
+        android:text="$32.10"
+        android:textSize="20dp"
+        android:layout_marginRight="@dimen/product_align_right"
+        android:textColor="@color/green_active"
+        android:layout_weight="9"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/product_label_vertical_disctance">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/customer_price_label"
+            android:text="Customer price"
+            android:textSize="20dp"
+            android:layout_marginLeft="@dimen/product_label_align_left"
+            android:textColor="@color/product_label"
+            android:layout_weight="9"
+            android:gravity="center"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/customer_price"
+            android:text="$42.10"
+            android:textSize="20dp"
+            android:layout_marginRight="@dimen/product_align_right"
+            android:textColor="@color/green_active"
+            android:layout_weight="9"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/product_label_vertical_disctance">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shop_label"
+        android:text="Shop"
+        android:textSize="20dp"
+        android:layout_marginLeft="@dimen/product_label_align_left"
+        android:textColor="@color/product_label"
+        android:layout_weight="9"
+        android:gravity="center" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/shop"
+        android:text="Shop 1"
+        android:textSize="20dp"
+        android:layout_marginRight="@dimen/product_align_right"
+        android:textColor="@color/blue_active"
+        android:layout_weight="9"
+        android:layout_alignParentRight="true"
+        android:gravity="center" />
+    </RelativeLayout>
+
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package com.example.jewell;
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -32,7 +33,7 @@ public class BottomBarActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         prepareBottomView();
-        initRecyclerView();
+        initRecyclerView(this);
         addDataSet();
     }
 
@@ -60,9 +61,9 @@ public class BottomBarActivity extends AppCompatActivity {
         productAdapter.submitList(data);
     }
 
-    private void initRecyclerView() {
+    private void initRecyclerView(Context context) {
         Log.d(TAG, "initRecyclerView: init recyclerview.");
-        productAdapter = new ProductRecyclerViewAdapter();
+        productAdapter = new ProductRecyclerViewAdapter(context);
         TopSpacingItemDecoration topSpacingItemDecoration = new TopSpacingItemDecoration(30);
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

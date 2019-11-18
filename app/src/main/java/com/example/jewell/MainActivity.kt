@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+//        setContentView(R.layout.product_full_view_item)
         val intent = Intent(this, BottomBarActivity::class.java)
         setContentView(R.layout.activity_main)
         startActivity(intent)
