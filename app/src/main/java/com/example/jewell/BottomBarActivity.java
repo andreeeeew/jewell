@@ -42,8 +42,8 @@ public class BottomBarActivity extends AppCompatActivity {
         fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.products), R.color.red_inactive));
         fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.inventarisation), R.color.blue_inactive));
         fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.archive), R.color.blue_grey_inactive));
-        fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.fake), R.color.green_inactive));
-        fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.mock), R.color.purple_inactive));
+//        fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.fake), R.color.green_inactive));
+//        fragList.add(ScreenSlidePageFragment.newInstance(getString(R.string.fake), R.color.purple_inactive));
         ScreenSlidePagerAdapter pagerAdapter = new ScreenSlidePagerAdapter(fragList, getSupportFragmentManager());
 
         final BubbleNavigationLinearView bubbleNavigationLinearView = findViewById(R.id.bottom_navigation_view_linear);
@@ -52,8 +52,8 @@ public class BottomBarActivity extends AppCompatActivity {
         bubbleNavigationLinearView.setBadgeValue(0, "40");
         bubbleNavigationLinearView.setBadgeValue(1, null); //invisible badge
         bubbleNavigationLinearView.setBadgeValue(2, "7");
-        bubbleNavigationLinearView.setBadgeValue(3, "2");
-        bubbleNavigationLinearView.setBadgeValue(4, ""); //empty badge
+//        bubbleNavigationLinearView.setBadgeValue(3, "2");
+//        bubbleNavigationLinearView.setBadgeValue(4, ""); //empty badge
     }
 
     private void addDataSet() {

@@ -1,6 +1,7 @@
 package com.example.jewell
 
 import com.example.jewell.models.Product
+import java.time.LocalDate
 
 class DataSource{
 
@@ -10,75 +11,147 @@ class DataSource{
             val list = ArrayList<Product>()
             list.add(
                 Product(
-                    "Congratulations!",
+                    "Obraczka",
                     "You made it to the end of the course!\r\n\r\nNext we'll be building the REST API!",
-                    "https://raw.githubusercontent.com/mitchtabian/Blog-Images/master/digital_ocean.png",
-                    "Sally"
+                    "https://png.pngtree.com/png-clipart/20190603/original/pngtree-jewelry-png-image_530814.jpg",
+                    "Gold",
+                    LocalDate.now(),
+                    "White Gold",
+                    585,
+                    17.5,
+                    18.5,
+                    33.4,
+                    44.71,
+                    "Super shop 1"
                 )
             )
             list.add(
                 Product(
-                    "Time to Build a Kotlin App!",
+                    "Kolczyki",
                     "The REST API course is complete. You can find the videos here: https://codingwithmitch.com/courses/build-a-rest-api/.",
-                    "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/time_to_build_a_kotlin_app.png",
-                    "mitch"
+                    "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53158.jpg",
+                    "Gold",
+                            LocalDate.now(),
+                    "Gold",
+                    555,
+                    11.5,
+                    16.5,
+                    32.1,
+                    55.83,
+                    "Super Shop 2"
                 )
             )
 
             list.add(
                 Product(
-                    "Interviewing a Web Developer and YouTuber",
+                    "Pierscionek",
                     "Justin has been producing online courses for YouTube, Udemy, and his website CodingForEntrepreneurs.com for over 5 years.",
-                    "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/coding_for_entrepreneurs.png",
-                    "John"
+                    "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53173.jpg",
+                    "White gold",
+                    LocalDate.now(),
+                    "Gold",
+                    575,
+                    14.5,
+                    11.5,
+                    36.1,
+                    54.83,
+                    "Super Shop 3"
                 )
             )
             list.add(
                 Product(
-                    "Freelance Android Developer (Vasiliy Zukanov)",
+                    "Zawieszka",
                     "Vasiliy has been a freelance android developer for several years. He also has some of the best android development courses I've had the pleasure of taking on Udemy.com.",
-                    "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/freelance_android_dev_vasiliy_zukanov.png",
-                    "Steven"
+                    "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53169.jpg",
+                    "Steven",
+                    LocalDate.now(),
+                    "Gold",
+                    575,
+                    14.5,
+                    11.5,
+                    36.1,
+                    54.83,
+                    "Super Shop 4"
                 )
             )
             list.add(
                 Product(
-                    "Freelance Android Developer, Donn Felker",
+                    "Bransoletka",
                     "Freelancing as an Android developer with Donn Felker.\\r\\n\\r\\nDonn is also:\\r\\n\\r\\n1) Founder of caster.io\\r\\n\\r\\n2) Co-host of the fragmented podcast (fragmentedpodcast.com).",
-                    "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/freelance_android_dev_donn_felker.png",
-                    "Richelle"
+                    "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53153.jpg",
+                    "Silver",
+                    LocalDate.now(),
+                    "Gold",
+                    575,
+                    14.5,
+                    11.5,
+                    36.1,
+                    54.83,
+                    "Super Shop 5"
                 )
             )
             list.add(
                 Product(
-                    "Work Life Balance for Software Developers",
+                    "Naszyjnik",
                     "What kind of hobbies do software developers have? It sounds like many software developers don't have a lot of hobbies and choose to focus on work. Is that a good idea?",
-                    "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/work_life_balance.png",
-                    "Jessica"
+                    "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53171.jpg",
+                    "White Gold",
+                    LocalDate.now(),
+                    "Gold",
+                    575,
+                    14.5,
+                    11.5,
+                    36.1,
+                    54.83,
+                    "Super Shop 6"
                 )
             )
             list.add(
                 Product(
-                    "Full Stack Web Developer - Nicholas Olsen",
+                    "Wisiorek",
                     "In this podcast I interviewed the Fullsnack Developer (AKA Nicholas Olsen).\\r\\n\\r\\nNicholas is many things. What I mean by that is, he's good at many things.\\r\\n\\r\\n1. He’s an entrepreneur\\r\\n\\r\\n2. Web developer\\r\\n\\r\\n3. Artist\\r\\n\\r\\n4. Graphic designer\\r\\n\\r\\n5. Musician (drums)\\r\\n\\r\\n6. Professional BodyBuilder.",
-                    "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/fullsnack_developer.png",
-                    "Guy"
+                    "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
+                    "Silver",
+                    LocalDate.now(),
+                    "Gold",
+                    575,
+                    14.5,
+                    11.5,
+                    36.1,
+                    54.83,
+                    "Super Shop 7"
                 )
             )
             list.add(
                 Product(
-                    "Javascript Expert - Wes Bos",
+                    "Kolczyki",
                     "Interviewing a web developer, javascript expert, entrepreneur, freelancer, podcaster, and much more.",
-                    "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/javascript_expert_wes_bos.png",
-                    "Ruby"
+                    "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
+                    "White Gold",
+                    LocalDate.now(),
+                    "Gold",
+                    575,
+                    14.5,
+                    11.5,
+                    36.1,
+                    54.83,
+                    "Super Shop 8"
                 )
             )
             list.add(
                 Product(
-                    "Senior Android Engineer - Kaushik Gopal",
+                    "Bransoletka",
                     "Kaushik Gopal is a Senior Android Engineer working in Silicon Valley.\r\n\r\nHe works as a Senior Staff engineer at Instacart.\r\n\r\nInstacart: https://www.instacart.com/",
-                    "https://raw.githubusercontent.com/mitchtabian/Kotlin-RecyclerView-Example/json-data-source/app/src/main/res/drawable/senior_android_engineer_kaushik_gopal.png",
-                    "mitch"
+                    "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
+                    "Gold",
+                    LocalDate.now(),
+                    "Gold",
+                    575,
+                    14.5,
+                    11.5,
+                    36.1,
+                    54.83,
+                    "Super Shop 9"
                 )
             )
             return list

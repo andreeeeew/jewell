@@ -63,11 +63,11 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     ): RecyclerView.ViewHolder(itemView){
         val productImage = itemView.product_image
         val productName = itemView.product_name
-        val productDescription = itemView.product_description
+        val productType = itemView.product_type
 
         fun bind(product: Product) {
             productName.setText(product.name)
-            productDescription.setText(product.description)
+            productType.setText(product.type)
 
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)

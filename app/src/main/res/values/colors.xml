@@ -41,7 +41,7 @@
     <color name="default_badge_background_color">#f44336</color>
     <color name="default_badge_text_color">#ffffff</color>
 
-    <color name="product_description">#b8860b</color>
+    <color name="product_type">#b8860b</color>
     <color name="product_label">#282828</color>
 
 </resources>

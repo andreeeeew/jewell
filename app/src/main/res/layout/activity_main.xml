@@ -63,25 +63,25 @@
             app:bt_shape="@drawable/transition_background_drawable_like"
             app:bt_title="@string/archive" />
 
-        <com.example.jewell.general_view.BubbleToggleView
-            android:id="@+id/l_item_notification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bt_colorActive="@color/green_active"
-            app:bt_colorInactive="@color/green_inactive"
-            app:bt_icon="@drawable/ic_playlist"
-            app:bt_shape="@drawable/transition_background_drawable_list"
-            app:bt_title="@string/fake" />
+<!--        <com.example.jewell.general_view.BubbleToggleView-->
+<!--            android:id="@+id/l_item_notification"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:bt_colorActive="@color/green_active"-->
+<!--            app:bt_colorInactive="@color/green_inactive"-->
+<!--            app:bt_icon="@drawable/ic_playlist"-->
+<!--            app:bt_shape="@drawable/transition_background_drawable_list"-->
+<!--            app:bt_title="@string/fake" />-->
 
-        <com.example.jewell.general_view.BubbleToggleView
-            android:id="@+id/l_item_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:bt_colorActive="@color/purple_active"
-            app:bt_colorInactive="@color/purple_inactive"
-            app:bt_icon="@drawable/ic_person"
-            app:bt_shape="@drawable/transition_background_drawable_person"
-            app:bt_title="@string/mock" />
+<!--        <com.example.jewell.general_view.BubbleToggleView-->
+<!--            android:id="@+id/l_item_profile"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            app:bt_colorActive="@color/purple_active"-->
+<!--            app:bt_colorInactive="@color/purple_inactive"-->
+<!--            app:bt_icon="@drawable/ic_person"-->
+<!--            app:bt_shape="@drawable/transition_background_drawable_person"-->
+<!--            app:bt_title="@string/mock" />-->
     </com.example.jewell.general_view.BubbleNavigationLinearView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
