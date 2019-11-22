@@ -30,7 +30,7 @@
             android:gravity="center"
             />
 
-        <TextView
+        <EditText
             android:id="@+id/fv_arrival_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
         android:gravity="center"
         />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fv_type"
@@ -90,7 +90,7 @@
         android:gravity="center"
         />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fv_millesimal"
@@ -120,7 +120,7 @@
         android:gravity="center"
         />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fv_size"
@@ -149,7 +149,7 @@
         android:layout_weight="9"
         android:gravity="center" />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fv_weight"
@@ -178,7 +178,7 @@
         android:gravity="center"
         />
 
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/fv_retail_price"
@@ -208,7 +208,7 @@
             android:gravity="center"
             />
 
-        <TextView
+        <EditText
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fv_customer_price"
