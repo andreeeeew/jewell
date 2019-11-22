@@ -1,5 +1,6 @@
 package com.example.jewell
 
+import com.example.jewell.models.Firm
 import com.example.jewell.models.Product
 import java.time.LocalDate
 
@@ -22,7 +23,16 @@ class DataSource{
                     18.5,
                     33.4,
                     44.71,
-                    "Super shop 1"
+                    "Super shop 1",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
             list.add(
@@ -38,7 +48,16 @@ class DataSource{
                     16.5,
                     32.1,
                     55.83,
-                    "Super Shop 2"
+                    "Super Shop 2",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
 
@@ -55,7 +74,16 @@ class DataSource{
                     11.5,
                     36.1,
                     54.83,
-                    "Super Shop 3"
+                    "Super Shop 3",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
             list.add(
@@ -71,7 +99,16 @@ class DataSource{
                     11.5,
                     36.1,
                     54.83,
-                    "Super Shop 4"
+                    "Super Shop 4",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
             list.add(
@@ -87,7 +124,16 @@ class DataSource{
                     11.5,
                     36.1,
                     54.83,
-                    "Super Shop 5"
+                    "Super Shop 5",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
             list.add(
@@ -103,7 +149,16 @@ class DataSource{
                     11.5,
                     36.1,
                     54.83,
-                    "Super Shop 6"
+                    "Super Shop 6",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
             list.add(
@@ -119,7 +174,16 @@ class DataSource{
                     11.5,
                     36.1,
                     54.83,
-                    "Super Shop 7"
+                    "Super Shop 7",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
             list.add(
@@ -135,7 +199,16 @@ class DataSource{
                     11.5,
                     36.1,
                     54.83,
-                    "Super Shop 8"
+                    "Super Shop 8",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
             list.add(
@@ -151,7 +224,16 @@ class DataSource{
                     11.5,
                     36.1,
                     54.83,
-                    "Super Shop 9"
+                    "Super Shop 9",
+                    1234567891011,
+                    51.94,
+                    1746.9,
+                    null,
+                    Firm(
+                        918267,
+                        0,
+                        "Diadema"
+                    )
                 )
             )
             return list

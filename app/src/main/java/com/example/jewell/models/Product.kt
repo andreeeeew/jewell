@@ -15,6 +15,11 @@ data class Product(
     var millesimal: Int,
     var size: Double,
     var weight: Double,
-    var retailPrice: Double,
-    var customerPrice: Double,
-    var shop: String): Serializable
+    var incomingPrice: Double,
+    var sellingPrice: Double,
+    var shop: String,
+    var barCode: Long,
+    var gramPrice: Double,
+    var quantityPrice: Double,
+    var selingDate: LocalDate?,
+    var firm: Firm): Serializable

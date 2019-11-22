@@ -3,8 +3,11 @@ package com.example.jewell
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.jewell.models.Product
 
 class ProductFullViewActivity: AppCompatActivity() {
@@ -55,6 +58,18 @@ class ProductFullViewActivity: AppCompatActivity() {
 
         var shop = findViewById<TextView>(R.id.fv_shop)
         shop.text = product.shop
+
+        var image = findViewById<ImageView>(R.id.fv_image)
+
+        val requestOptions = RequestOptions()
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background)
+
+        Glide
+            .with(this)
+            .applyDefaultRequestOptions(requestOptions)
+            .load(product.image)
+            .into(image)
 
 
     }
