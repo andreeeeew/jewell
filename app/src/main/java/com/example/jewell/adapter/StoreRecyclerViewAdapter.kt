@@ -58,13 +58,13 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     ): RecyclerView.ViewHolder(itemView){
         val storeImage = itemView.store_image
         val storeName = itemView.store_name
-//        val productImage = itemView.product_image
-//        val productName = itemView.product_name
-//        val productType = itemView.product_type
+        val storeProducts = itemView.store_products
+        val storeLastInvent = itemView.store_last_inventorization
 
         fun bind(store: Store) {
-            storeName.setText(store.name)
-//            productType.setText(store.type)
+            storeName.text = store.name
+            storeProducts.text = store.products.size.toString()
+            storeLastInvent.text = store.lastInvent.toString()
 
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)

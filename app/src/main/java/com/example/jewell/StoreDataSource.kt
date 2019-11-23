@@ -4,7 +4,7 @@ import com.example.jewell.models.Firm
 import com.example.jewell.models.Product
 import java.time.LocalDate
 
-class ShopDataSource{
+class StoreDataSource{
 
     companion object{
 
