@@ -44,4 +44,7 @@
     <color name="product_type">#b8860b</color>
     <color name="product_label">#282828</color>
 
+    <color name="store_products_label">#0000ff</color>
+    <color name="store_inentorization_label">#33001a</color>
+
 </resources>

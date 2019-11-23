@@ -4,7 +4,9 @@ import java.io.Serializable
 
 // TODO(anвreew) change to double binding
 data class Store(
-    var storeCity: String,
-    var storeID: Int,
+    var image: String,
+    var city: String,
+    var ID: Int,
     var zipCode: String,
-    var storeName: String): Serializable
+    var name: String,
+    var products: List<Product>): Serializable
