@@ -266,6 +266,7 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
     }
 
     override fun onClick(v: View) {
+        Log.d("TAAG", "click was made")
         val changedPosition = getItemPositionById(v.id)
         if (changedPosition >= 0) {
             if (changedPosition == currentActiveItemPosition) {
