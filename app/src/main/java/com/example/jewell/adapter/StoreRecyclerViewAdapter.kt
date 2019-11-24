@@ -6,21 +6,24 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
-import com.example.jewell.ProductFullViewActivity
 import com.example.jewell.R
+import com.example.jewell.fragment.ProductsRecyclerViewFragment
 import com.example.jewell.models.Store
 import kotlinx.android.synthetic.main.layout_store_list_item.view.*
 
 class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private var mContext: Context
     private var stores: List<Store> = ArrayList()
-    private val TAG = "RecyclerViewAdapter"
+    private val TAG = "StoreRecyclerViewAdapter"
+    private lateinit var supportFragmentManager: FragmentManager
 
-    constructor(context: Context) : super() {
+    constructor(context: Context, supportFragmentManager: FragmentManager) : super() {
         mContext = context
+        this.supportFragmentManager = supportFragmentManager
     }
 
 
@@ -41,9 +44,15 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 holder.itemView.setOnClickListener {
                     Log.d(TAG, "Store was clicked")
 
-                    var intent = Intent(mContext, ProductFullViewActivity::class.java)
-                    intent.putExtra("store", stores[position])
-                    mContext.startActivity(intent)
+                    var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
+                    val tr = supportFragmentManager.beginTransaction()
+                    tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment())
+                    tr.addToBackStack("products")
+                    tr.commit()
+
+//                    var intent = Intent(mContext, ProductFullViewActivity::class.java)
+//                    intent.putExtra("store", stores[position])
+//                    mContext.startActivity(superIntent)
                 }
             }
         }

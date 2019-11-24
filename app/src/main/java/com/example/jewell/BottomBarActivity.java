@@ -1,6 +1,5 @@
 package com.example.jewell;
 
-import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,23 +9,19 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
 import androidx.viewpager2.widget.ViewPager2;
 
 import com.example.jewell.adapter.ProductRecyclerViewAdapter;
 import com.example.jewell.adapter.ScreenSlidePagerAdapter;
 import com.example.jewell.adapter.StoreRecyclerViewAdapter;
+import com.example.jewell.fragment.ProductsRecyclerViewFragment;
 import com.example.jewell.fragment.ScreenSlidePageFragment;
+import com.example.jewell.fragment.StoresRecyclerViewFragment;
 import com.example.jewell.general_view.BubbleNavigationLinearView;
 import com.example.jewell.general_view.listener.BubbleNavigationChangeListener;
-import com.example.jewell.models.Product;
-import com.example.jewell.view_decorator.TopSpacingItemDecoration;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import me.everything.android.ui.overscroll.OverScrollDecoratorHelper;
 
 
 public class BottomBarActivity extends AppCompatActivity {
@@ -46,8 +41,12 @@ public class BottomBarActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ArrayList<ScreenSlidePageFragment> fragList = new ArrayList<>();
-        fragList.add(ScreenSlidePageFragment.newInstance("Home", R.color.red_inactive));
+        ArrayList<Fragment> fragList = new ArrayList<>();
+//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+//        fragList.add(recyclerView);
+        fragList.add(new ProductsRecyclerViewFragment());
+        fragList.add(new StoresRecyclerViewFragment(getSupportFragmentManager()));
+        fragList.add(ScreenSlidePageFragment.newInstance("Hoooome", R.color.red_inactive));
         fragList.add(ScreenSlidePageFragment.newInstance("Search", R.color.blue_inactive));
         fragList.add(ScreenSlidePageFragment.newInstance("Likes", R.color.blue_grey_inactive));
 //        fragList.add(ScreenSlidePageFragment.newInstance("Notification", R.color.green_inactive));
@@ -90,24 +89,24 @@ public class BottomBarActivity extends AppCompatActivity {
             }
         });
 
-        initRecyclerView(this);
-        addDataSet();
+//        initRecyclerView(this);
+//        addDataSet();
     }
-    private void addDataSet() {
-        List<Product> data = DataSource.Companion.createDataSet();
-        productAdapter.submitList(data);
-    }
-
-    private void initRecyclerView(Context context) {
-        Log.d(TAG, "initRecyclerView: init recyclerview.");
-        productAdapter = new ProductRecyclerViewAdapter(context);
-        TopSpacingItemDecoration topSpacingItemDecoration = new TopSpacingItemDecoration(30);
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(productAdapter);
-        recyclerView.addItemDecoration(topSpacingItemDecoration);
-
-        OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
-    }
+//    private void addDataSet() {
+//        List<Product> data = DataSource.Companion.createDataSet();
+//        productAdapter.submitList(data);
+//    }
+//
+//    private void initRecyclerView(Context context) {
+//        Log.d(TAG, "initRecyclerView: init recyclerview.");
+//        productAdapter = new ProductRecyclerViewAdapter(context);
+//        TopSpacingItemDecoration topSpacingItemDecoration = new TopSpacingItemDecoration(30);
+//        RecyclerView recyclerView = findViewById(R.id.recycler_view);
+//        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        recyclerView.setAdapter(productAdapter);
+//        recyclerView.addItemDecoration(topSpacingItemDecoration);
+//
+//        OverScrollDecoratorHelper.setUpOverScroll(recyclerView, OverScrollDecoratorHelper.ORIENTATION_HORIZONTAL);
+//    }
 
 }

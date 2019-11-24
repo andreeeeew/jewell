@@ -2,13 +2,14 @@ package com.example.jewell
 
 import com.example.jewell.models.Firm
 import com.example.jewell.models.Product
+import com.example.jewell.models.Store
 import java.time.LocalDate
 
 class DataSource{
 
-    companion object{
+    companion object {
 
-        fun createDataSet(): ArrayList<Product>{
+        fun createProductsDataSet(): ArrayList<Product> {
             val list = ArrayList<Product>()
             list.add(
                 Product(
@@ -41,7 +42,7 @@ class DataSource{
                     "The REST API course is complete. You can find the videos here: https://codingwithmitch.com/courses/build-a-rest-api/.",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53158.jpg",
                     "Gold",
-                            LocalDate.now(),
+                    LocalDate.now(),
                     "Gold",
                     555,
                     11.5,
@@ -234,6 +235,77 @@ class DataSource{
                         0,
                         "Diadema"
                     )
+                )
+            )
+            return list
+        }
+
+        fun createStoresDataSet(): List<Store> {
+            val list = ArrayList<Store>()
+            list.add(
+                Store(
+                    "https://www.cvabc.org/wp-content/uploads/stock-vector-store-front-strip-mall-stores-and-city-skyline-99826760.jpg",
+                    "Warsaw",
+                    1,
+                    "01-234",
+                    "Zlatodar",
+                    ArrayList<Product>(),
+                    LocalDate.now()
+                )
+            )
+            list.add(
+                Store(
+                    "https://www.cvabc.org/wp-content/uploads/stock-vector-store-front-strip-mall-stores-and-city-skyline-99826760.jpg",
+                    "Warsaw",
+                    1,
+                    "01-234",
+                    "Zlatodar",
+                    ArrayList<Product>(),
+                    LocalDate.now()
+                )
+            )
+            list.add(
+                Store(
+                    "https://www.cvabc.org/wp-content/uploads/stock-vector-store-front-strip-mall-stores-and-city-skyline-99826760.jpg",
+                    "Warsaw",
+                    1,
+                    "01-234",
+                    "Zlatodar",
+                    ArrayList<Product>(),
+                    LocalDate.now()
+                )
+            )
+            list.add(
+                Store(
+                    "https://www.cvabc.org/wp-content/uploads/stock-vector-store-front-strip-mall-stores-and-city-skyline-99826760.jpg",
+                    "Warsaw",
+                    1,
+                    "01-234",
+                    "Zlatodar",
+                    ArrayList<Product>(),
+                    LocalDate.now()
+                )
+            )
+            list.add(
+                Store(
+                    "https://www.cvabc.org/wp-content/uploads/stock-vector-store-front-strip-mall-stores-and-city-skyline-99826760.jpg",
+                    "Warsaw",
+                    1,
+                    "01-234",
+                    "Zlatodar",
+                    ArrayList<Product>(),
+                    LocalDate.now()
+                )
+            )
+            list.add(
+                Store(
+                    "https://www.cvabc.org/wp-content/uploads/stock-vector-store-front-strip-mall-stores-and-city-skyline-99826760.jpg",
+                    "Warsaw",
+                    1,
+                    "01-234",
+                    "Zlatodar",
+                    ArrayList<Product>(),
+                    LocalDate.now()
                 )
             )
             return list

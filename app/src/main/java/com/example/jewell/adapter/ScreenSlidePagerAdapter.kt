@@ -11,7 +11,7 @@ import com.example.jewell.fragment.ScreenSlidePageFragment
  * sequence.
  */
 class ScreenSlidePagerAdapter(
-    private val fragmentList: ArrayList<ScreenSlidePageFragment>,
+    private val fragmentList: ArrayList<Fragment>,
     fm: FragmentManager,
     lifecycle: Lifecycle) :
     FragmentStateAdapter(fm, lifecycle) {
