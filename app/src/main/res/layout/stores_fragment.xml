@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/blue_inactive">
 
     <androidx.recyclerview.widget.RecyclerView
         tools:listitem="@layout/layout_store_list_item"
