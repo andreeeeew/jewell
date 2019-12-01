@@ -2,6 +2,7 @@ package com.example.jewell
 
 import com.example.jewell.models.Firm
 import com.example.jewell.models.Product
+import com.example.jewell.models.StockTaking
 import com.example.jewell.models.Store
 import java.time.LocalDate
 
@@ -310,5 +311,18 @@ class DataSource{
             )
             return list
         }
+
+        fun createInventorizationsDataSet(): List<StockTaking> {
+            val stores = createStoresDataSet()
+            val stockTakings = ArrayList<StockTaking>()
+            var i = 0
+            for (store in stores) {
+                val stockTaking = StockTaking(LocalDate.now(), null, i, stores[i])
+                stockTakings.add(stockTaking)
+                i++
+            }
+            return stockTakings
+        }
     }
+
 }

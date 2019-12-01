@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="10dp"
+    app:cardCornerRadius="2dp"
+    app:cardPreventCornerOverlap="false"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/inventorization_image"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                app:civ_border_color="@color/blue_inactive"
+                app:civ_border_width="4dp"
+                />
+
+            <TextView
+                android:id="@+id/inventorization_store_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="55dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="70dp"
+                android:layout_toEndOf="@id/inventorization_image"
+                android:text="@string/shop_name_1"
+                android:textColor="@color/purple_active"
+                android:textSize="19sp" />
+
+            <TextView
+                android:id="@+id/inventorizaed_products"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/inventorization_store_name"
+                android:layout_marginStart="77dp"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/inventorization_image"
+                android:text="437"
+                android:textColor="@color/green_active"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/products_separator"
+                android:layout_marginTop="6dp"
+                android:text="/"
+                android:layout_below="@+id/inventorization_store_name"
+                android:layout_marginVertical="3dp"
+                android:layout_toEndOf="@+id/inventorizaed_products"
+                android:layout_marginStart="2dp"
+                android:textColor="@color/yellow_active"
+                android:textSize="17sp"/>
+
+
+            <TextView
+                android:id="@+id/all_products_in_store"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="637"
+                android:layout_below="@id/inventorization_store_name"
+                android:layout_marginTop="6dp"
+                android:layout_toEndOf="@+id/products_separator"
+                android:layout_marginStart="3dp"
+                android:textColor="@color/red_active"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/inventorization_started"
+                android:text="19.11.2019"
+                android:layout_below="@+id/all_products_in_store"
+                android:layout_marginTop="13dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="12dp"
+                android:textColor="@color/store_inentorization_label"
+                />
+
+        </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -46,5 +46,6 @@
 
     <color name="store_products_label">#0000ff</color>
     <color name="store_inentorization_label">#33001a</color>
+    <color name="invent_fab">#5900b3</color>
 
 </resources>

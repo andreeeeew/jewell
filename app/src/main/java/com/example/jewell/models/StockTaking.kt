@@ -6,5 +6,6 @@ import java.time.LocalDate
 data class StockTaking(
     var startDate: LocalDate,
     var endDate: LocalDate?,
-    var stockTakingID: StockTaking
+    var stockTakingID: Int,
+    var store: Store
 ): Serializable
