@@ -3,8 +3,10 @@ package com.example.jewell.activity
 import android.app.Activity
 import android.os.Bundle
 import android.util.Log
+import com.google.android.material.snackbar.Snackbar
 import com.google.zxing.Result
 import me.dm7.barcodescanner.zxing.ZXingScannerView
+
 
 
 class BarCodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
@@ -30,8 +32,12 @@ class BarCodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
 
     override fun handleResult(rawResult: Result?) {
         // Do something with the result here
-        Log.v(TAG, rawResult?.getText()); // Prints scan results
-        Log.v(TAG, rawResult?.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
+        Log.v(TAG, rawResult!!.getText()); // Prints scan results
+        Log.v(TAG, rawResult!!.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
+        val snackbar = Snackbar
+            .make(mScannerView!!.rootView, "Bar Code is ${rawResult!!.text}", Snackbar.LENGTH_LONG)
+
+        snackbar.show()
 
         // If you would like to resume scanning, call this method below:
         mScannerView?.resumeCameraPreview(this);

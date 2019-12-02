@@ -44,7 +44,7 @@ public class BottomBarActivity extends AppCompatActivity {
         ArrayList<Fragment> fragList = new ArrayList<>();
 //        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 //        fragList.add(recyclerView);
-        fragList.add(new ProductsRecyclerViewFragment());
+        fragList.add(new ProductsRecyclerViewFragment(false));
         fragList.add(new StoresRecyclerViewFragment(getSupportFragmentManager()));
         fragList.add(new InventorizationRecyclerViewFragment(getSupportFragmentManager()));
 //        fragList.add(ScreenSlidePageFragment.newInstance("Invent", R.color.red_inactive));

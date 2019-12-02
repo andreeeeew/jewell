@@ -46,7 +46,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
                     var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
                     val tr = supportFragmentManager.beginTransaction()
-                    tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment())
+                    tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment(false))
                     tr.addToBackStack("products")
                     tr.commit()
 

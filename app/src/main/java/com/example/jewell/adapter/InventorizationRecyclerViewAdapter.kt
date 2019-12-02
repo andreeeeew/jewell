@@ -14,6 +14,7 @@ import com.example.jewell.R
 import com.example.jewell.fragment.ProductsRecyclerViewFragment
 import com.example.jewell.models.StockTaking
 import kotlinx.android.synthetic.main.layout_inventorization_list_item.view.*
+import kotlinx.android.synthetic.main.products_fragment.view.*
 
 
 class InventorizationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -44,12 +45,13 @@ class InventorizationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.View
                 holder.bind(inventorizations[position])
                 holder.itemView.setOnClickListener {
                     Log.d(TAG, "inventorization was clicked")
-
                     var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
+
                     val tr = supportFragmentManager.beginTransaction()
-                    tr.replace(R.id.inventorizationRelativeLayout, ProductsRecyclerViewFragment())
+                    tr.replace(R.id.inventorizationRelativeLayout, ProductsRecyclerViewFragment(true))
                     tr.addToBackStack("products")
                     tr.commit()
+//                    addOnScrollListener(holder, superIntent)
 
 //                    var intent = Intent(mContext, ProductFullViewActivity::class.java)
 //                    intent.putExtra("inventorization", inventorizations[position])
@@ -57,6 +59,29 @@ class InventorizationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.View
                 }
             }
         }
+    }
+
+    private fun addOnScrollListener(
+        holder: InventorizationViewHolder,
+        superIntent: Intent
+    ) {
+        val fab = holder.itemView.products_fab
+        val recyclerView = holder.itemView.recyclerViewProducts
+        recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                super.onScrolled(recyclerView, dx, dy)
+                if (dy > 0 && fab.visibility == View.VISIBLE) {
+                    fab.hide()
+                } else if (dy < 0 && fab.visibility != View.VISIBLE) {
+                    fab.show()
+                }
+            }
+        })
+
+//        fab.setOnClickListener {
+//            Log.d("DSA", "FAB was clicked")
+//            startActivityForResult(intent, 0)
+//        }
     }
 
     fun submitList(inventorizationList: List<StockTaking>) {

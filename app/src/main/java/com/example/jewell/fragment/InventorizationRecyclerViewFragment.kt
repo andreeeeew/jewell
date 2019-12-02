@@ -44,22 +44,22 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
         recyclerView.addItemDecoration(topSpacingItemDecoration)
         addDataSet()
 
-        val fab = view.findViewById<FloatingActionButton>(R.id.inventorization_fab)
-        recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                super.onScrolled(recyclerView, dx, dy)
-                if (dy > 0 && fab.visibility == View.VISIBLE) {
-                    fab.hide()
-                } else if (dy < 0 && fab.visibility != View.VISIBLE) {
-                    fab.show()
-                }
-            }
-        })
-
-        fab.setOnClickListener {
-            Log.d("DSA", "FAB was clicked")
-            startActivityForResult(intent, 0)
-        }
+//        val fab = view.findViewById<FloatingActionButton>(R.id.inventorization_fab)
+//        recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
+//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+//                super.onScrolled(recyclerView, dx, dy)
+//                if (dy > 0 && fab.visibility == View.VISIBLE) {
+//                    fab.hide()
+//                } else if (dy < 0 && fab.visibility != View.VISIBLE) {
+//                    fab.show()
+//                }
+//            }
+//        })
+//
+//        fab.setOnClickListener {
+//            Log.d("DSA", "FAB was clicked")
+//            startActivityForResult(intent, 0)
+//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
