@@ -15,7 +15,7 @@ class DataSource{
             list.add(
                 Product(
                     "Obraczka",
-                    "You made it to the end of the course!\r\n\r\nNext we'll be building the REST API!",
+                    "21.54",
                     "https://png.pngtree.com/png-clipart/20190603/original/pngtree-jewelry-png-image_530814.jpg",
                     "Gold",
                     LocalDate.now(),
@@ -40,7 +40,7 @@ class DataSource{
             list.add(
                 Product(
                     "Kolczyki",
-                    "The REST API course is complete. You can find the videos here: https://codingwithmitch.com/courses/build-a-rest-api/.",
+                    "91.52",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53158.jpg",
                     "Gold",
                     LocalDate.now(),
@@ -66,7 +66,7 @@ class DataSource{
             list.add(
                 Product(
                     "Pierscionek",
-                    "Justin has been producing online courses for YouTube, Udemy, and his website CodingForEntrepreneurs.com for over 5 years.",
+                    "13.42",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53173.jpg",
                     "White gold",
                     LocalDate.now(),
@@ -91,7 +91,7 @@ class DataSource{
             list.add(
                 Product(
                     "Zawieszka",
-                    "Vasiliy has been a freelance android developer for several years. He also has some of the best android development courses I've had the pleasure of taking on Udemy.com.",
+                    "75.18",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53169.jpg",
                     "Steven",
                     LocalDate.now(),
@@ -116,7 +116,7 @@ class DataSource{
             list.add(
                 Product(
                     "Bransoletka",
-                    "Freelancing as an Android developer with Donn Felker.\\r\\n\\r\\nDonn is also:\\r\\n\\r\\n1) Founder of caster.io\\r\\n\\r\\n2) Co-host of the fragmented podcast (fragmentedpodcast.com).",
+                    "97.53",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53153.jpg",
                     "Silver",
                     LocalDate.now(),
@@ -141,7 +141,7 @@ class DataSource{
             list.add(
                 Product(
                     "Naszyjnik",
-                    "What kind of hobbies do software developers have? It sounds like many software developers don't have a lot of hobbies and choose to focus on work. Is that a good idea?",
+                    "61.83",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53171.jpg",
                     "White Gold",
                     LocalDate.now(),
@@ -166,7 +166,7 @@ class DataSource{
             list.add(
                 Product(
                     "Wisiorek",
-                    "In this podcast I interviewed the Fullsnack Developer (AKA Nicholas Olsen).\\r\\n\\r\\nNicholas is many things. What I mean by that is, he's good at many things.\\r\\n\\r\\n1. He’s an entrepreneur\\r\\n\\r\\n2. Web developer\\r\\n\\r\\n3. Artist\\r\\n\\r\\n4. Graphic designer\\r\\n\\r\\n5. Musician (drums)\\r\\n\\r\\n6. Professional BodyBuilder.",
+                    "80.17",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "Silver",
                     LocalDate.now(),
@@ -191,7 +191,7 @@ class DataSource{
             list.add(
                 Product(
                     "Kolczyki",
-                    "Interviewing a web developer, javascript expert, entrepreneur, freelancer, podcaster, and much more.",
+                    "78.98",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "White Gold",
                     LocalDate.now(),
@@ -216,7 +216,7 @@ class DataSource{
             list.add(
                 Product(
                     "Bransoletka",
-                    "Kaushik Gopal is a Senior Android Engineer working in Silicon Valley.\r\n\r\nHe works as a Senior Staff engineer at Instacart.\r\n\r\nInstacart: https://www.instacart.com/",
+                    "67.09",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "Gold",
                     LocalDate.now(),

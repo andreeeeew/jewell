@@ -1,22 +1,16 @@
 package com.example.jewell.adapter
 
 import android.content.Context
-import android.content.Intent
-import android.graphics.Color
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.jewell.ProductFullViewActivity
-import com.example.jewell.R
+import com.example.jewell.databinding.LayoutProductListItemBinding
 import com.example.jewell.models.Product
 import kotlinx.android.synthetic.main.layout_product_list_item.view.*
 
 
-class ProductRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
+class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapter.ProductViewHolder> {
     private var mContext: Context
     private var products: List<Product> = ArrayList()
     private val inventorised = HashSet<String>()
@@ -27,34 +21,38 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     }
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return ProductViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.layout_product_list_item, parent, false)
-        )
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val layoutProductListItemBinding = LayoutProductListItemBinding.inflate(layoutInflater, parent, false)
+        return ProductViewHolder(layoutProductListItemBinding)
     }
 
     override fun getItemCount(): Int {
         return products.size
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        when (holder) {
-            is ProductViewHolder -> {
-                holder.bind(products[position])
-                Log.d(TAG, "product barcode is ${products[position].barCode}")
-                Log.d(TAG, "inventorised is ${inventorised.toList().toString()}")
-                if (inventorised.contains(products[position].barCode)) {
-                    holder.itemView.product_constraint_layout.setBackgroundColor(Color.GREEN)
-                }
-                holder.itemView.setOnClickListener {
-                    Log.d(TAG, "Item was clicked")
 
-                    var intent = Intent(mContext, ProductFullViewActivity::class.java)
-                    intent.putExtra("product", products[position])
-                    mContext.startActivity(intent)
-                }
-            }
-        }
+
+    override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
+        var product = products[position]
+        holder.bind(product)
+//        when (holder) {
+//            is ProductViewHolder -> {
+//                holder.bind(products[position])
+//                Log.d(TAG, "product barcode is ${products[position].barCode}")
+//                Log.d(TAG, "inventorised is ${inventorised.toList().toString()}")
+//                if (inventorised.contains(products[position].barCode)) {
+//                    holder.itemView.product_constraint_layout.setBackgroundColor(Color.GREEN)
+//                }
+//                holder.itemView.setOnClickListener {
+//                    Log.d(TAG, "Item was clicked")
+//
+//                    var intent = Intent(mContext, ProductFullViewActivity::class.java)
+//                    intent.putExtra("product", products[position])
+//                    mContext.startActivity(intent)
+//                }
+//            }
+//        }
     }
 
     fun submitList(productList: List<Product>) {
@@ -69,22 +67,30 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>
     class ProductViewHolder constructor(
         itemView: View
     ): RecyclerView.ViewHolder(itemView){
+
+
+        private lateinit var binding: LayoutProductListItemBinding
+        constructor(binding: LayoutProductListItemBinding) : this(binding.root) {
+            this.binding = binding
+        }
+
         val productImage = itemView.product_image
         val productName = itemView.product_name
         val productType = itemView.product_type
 
         fun bind(product: Product) {
-            productName.setText(product.name)
-            productType.setText(product.type)
-
-            val requestOptions = RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
-
-            Glide.with(itemView.context)
-                .applyDefaultRequestOptions(requestOptions)
-                .load(product.image)
-                .into(productImage)
+            binding.product = product
+            binding.executePendingBindings()
+//            productType.setText(product.type)
+//
+//            val requestOptions = RequestOptions()
+//                .placeholder(R.drawable.ic_launcher_background)
+//                .error(R.drawable.ic_launcher_background)
+//
+//            Glide.with(itemView.context)
+//                .applyDefaultRequestOptions(requestOptions)
+//                .load(product.image)
+//                .into(productImage)
         }
     }
 }
