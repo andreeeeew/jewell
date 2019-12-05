@@ -12,10 +12,9 @@ import java.io.Serializable
 import java.time.LocalDate
 
 
-// TODO(anвreew) change to double binding
 class Product(): Serializable, Observable {
     private val callbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry()}
-    companion object DataBindingAdapter{
+    companion object DataBindingAdapter: Serializable{
         @BindingAdapter("bind:product_image_url")
         @JvmStatic
         fun loadImage(view: CircleImageView, url: String) {

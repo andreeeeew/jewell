@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable
-            name="product"
-            type="com.example.jewell.models.Product" />
+        <variable name="product" type="com.example.jewell.models.Product" />
+        <variable name="presenter" type="com.example.jewell.presenter.ProductPresenter" />
     </data>
 
     <androidx.cardview.widget.CardView
@@ -14,6 +13,7 @@
         app:cardElevation="10dp"
         app:cardCornerRadius="2dp"
         app:cardPreventCornerOverlap="false"
+        android:onClick="@{(view) -> presenter.onProductClicked(view, product)}"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +24,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                >
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/product_image"
@@ -32,7 +33,8 @@
                     android:layout_height="96dp"
                     app:product_image_url="@{product.image}"
                     app:civ_border_color="@color/blue_inactive"
-                    app:civ_border_width="1dp" />
+                    app:civ_border_width="1dp"
+                    />
 
                 <TextView
                     android:id="@+id/product_name"

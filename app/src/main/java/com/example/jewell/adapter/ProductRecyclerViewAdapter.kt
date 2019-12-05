@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jewell.databinding.LayoutProductListItemBinding
 import com.example.jewell.models.Product
+import com.example.jewell.presenter.ProductPresenter
 import kotlinx.android.synthetic.main.layout_product_list_item.view.*
 
 
@@ -24,6 +25,9 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
         val layoutProductListItemBinding = LayoutProductListItemBinding.inflate(layoutInflater, parent, false)
+        layoutProductListItemBinding.presenter = ProductPresenter()
+//        val presenter = ProductPresenter()
+//        layoutProductListItemBinding.setVariable(BR.presenter, presenter)
         return ProductViewHolder(layoutProductListItemBinding)
     }
 
