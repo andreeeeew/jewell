@@ -14,14 +14,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.jewell.DataSource
 import com.example.jewell.R
 import com.example.jewell.activity.BarCodeScannerActivity
-import com.example.jewell.adapter.InventorizationRecyclerViewAdapter
+import com.example.jewell.adapter.InventorisationRecyclerViewAdapter
 import com.example.jewell.view_decorator.TopSpacingItemDecoration
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 
 class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentManager) : Fragment() {
     private lateinit var inflatedView: View
-    private lateinit var inventorizationAdapter: InventorizationRecyclerViewAdapter
+    private lateinit var inventorisationAdapter: InventorisationRecyclerViewAdapter
     private lateinit var intent: Intent
 
 
@@ -31,7 +30,7 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
         savedInstanceState: Bundle?
     ): View? {
         inflatedView = inflater.inflate(R.layout.inventorization_fragment, container, false)
-        inventorizationAdapter = InventorizationRecyclerViewAdapter(context!!, supportFragmentManager)
+        inventorisationAdapter = InventorisationRecyclerViewAdapter(context!!, supportFragmentManager)
         intent = Intent(context!!, BarCodeScannerActivity::class.java)
         return inflatedView
     }
@@ -40,7 +39,7 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
         val topSpacingItemDecoration = TopSpacingItemDecoration(30)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewInventorizations)
         recyclerView.layoutManager = LinearLayoutManager(context!!)
-        recyclerView.adapter = inventorizationAdapter
+        recyclerView.adapter = inventorisationAdapter
         recyclerView.addItemDecoration(topSpacingItemDecoration)
         addDataSet()
 
@@ -77,6 +76,6 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
 
     fun addDataSet() {
         val data = DataSource.createInventorizationsDataSet()
-        inventorizationAdapter.submitList(data)
+        inventorisationAdapter.submitList(data)
     }
 }

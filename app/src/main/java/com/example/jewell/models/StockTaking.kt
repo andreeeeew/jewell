@@ -8,4 +8,6 @@ data class StockTaking(
     var endDate: LocalDate?,
     var stockTakingID: Int,
     var store: Store
+    //TODO(andreew)
+//    var inventorizedBarCodes: HashSet<String>
 ): Serializable

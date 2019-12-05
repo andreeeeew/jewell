@@ -16,6 +16,7 @@ import com.example.jewell.activity.BarCodeScannerActivity
 import com.example.jewell.adapter.ProductRecyclerViewAdapter
 import com.example.jewell.view_decorator.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.products_fragment.view.*
+import kotlin.random.Random
 
 class ProductsRecyclerViewFragment(val makeVisible: Boolean) : Fragment() {
     private lateinit var inflatedView: View
@@ -62,9 +63,12 @@ class ProductsRecyclerViewFragment(val makeVisible: Boolean) : Fragment() {
         })
         fab.setOnClickListener {
             Log.d("DSA", "FAB was clicked")
+            val barcode = Random.nextInt(7, 9).toString()
+            productAdapter.markProudctAsInventorized(barcode)
+//            startActivityForResult(intent, 0)
             startActivity(intent.apply {
                 //TODO(andreew) create hashmap of barcodes and done products. Think about it for a while.
-                putExtra("products", this)
+//                putExtra("products", this)
             })
         }
     }

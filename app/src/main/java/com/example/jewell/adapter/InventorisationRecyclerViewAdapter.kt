@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.layout_inventorization_list_item.view.*
 import kotlinx.android.synthetic.main.products_fragment.view.*
 
 
-class InventorizationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> {
+open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private var mContext: Context
     private var inventorizations: List<StockTaking> = ArrayList()
     private val TAG = "InventorizationRecyclerViewAdapter"

@@ -11,7 +11,9 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:id="@+id/product_constraint_layout"
+        >
 
         <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="match_parent"
@@ -30,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Super Round Ring"
-                android:textColor="@color/purple_active"
+                android:textColor="@color/product_name"
                 android:textSize="19sp"
                 android:layout_toRightOf="@id/product_image"
                 android:layout_marginLeft="10dp"
@@ -55,7 +57,7 @@
                 android:id="@+id/product_price"
                 android:text="$21.40"
                 android:textSize="19dp"
-                android:textColor="@color/green_active"
+                android:textColor="@color/product_price"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="10dp"

@@ -18,7 +18,7 @@ data class Product(
     var incomingPrice: Double,
     var sellingPrice: Double,
     var shop: String,
-    var barCode: Long,
+    var barCode: String,
     var gramPrice: Double,
     var quantityPrice: Double,
     var selingDate: LocalDate?,

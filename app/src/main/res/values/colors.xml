@@ -48,4 +48,8 @@
     <color name="store_inentorization_label">#33001a</color>
     <color name="invent_fab">#5900b3</color>
 
+    <color name="product_price">#DE801F</color>
+    <color name="product_name">#401FDE</color>
+    <color name="product_inventorized">#00FF8E</color>
+
 </resources>
