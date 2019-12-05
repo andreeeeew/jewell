@@ -4,14 +4,33 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
+import com.example.jewell.R
 import com.example.jewell.databinding.LayoutProductListItemBinding
 import com.example.jewell.models.Product
 import com.example.jewell.presenter.ProductPresenter
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.layout_product_list_item.view.*
+import java.io.Serializable
 
 
 class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapter.ProductViewHolder> {
+    companion object DataBindingAdapter: Serializable {
+        @BindingAdapter("bind:product_image_url")
+        @JvmStatic
+        fun loadImage(view: CircleImageView, url: String) {
+            val requestOptions = RequestOptions()
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_background)
+            Glide.with(view.context)
+                .applyDefaultRequestOptions(requestOptions)
+                .load(url)
+                .into(view)
+        }
+    }
     private var mContext: Context
     private var products: List<Product> = ArrayList()
     private val inventorised = HashSet<String>()

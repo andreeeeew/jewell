@@ -25,7 +25,7 @@ class DataSource{
                     18.5,
                     33.4,
                     44.71,
-                    "Super shop 1",
+                        "Super shop 1",
                     "1",
                     51.94,
                     1746.9,

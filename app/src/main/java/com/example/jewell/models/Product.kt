@@ -1,32 +1,15 @@
 package com.example.jewell.models
 
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.databinding.Bindable
-import androidx.databinding.BindingAdapter
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
-import com.example.jewell.R
-import de.hdodenhof.circleimageview.CircleImageView
-import java.io.Serializable
 import java.time.LocalDate
 
 
-class Product(): Serializable, Observable {
+class Product(): Observable, Parcelable {
     private val callbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry()}
-    companion object DataBindingAdapter: Serializable{
-        @BindingAdapter("bind:product_image_url")
-        @JvmStatic
-        fun loadImage(view: CircleImageView, url: String) {
-            val requestOptions = RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
-            Glide.with(view.context)
-                .applyDefaultRequestOptions(requestOptions)
-                .load(url)
-                .into(view)
-        }
-    }
     var name = ""
     var price = ""
     @get:Bindable
@@ -89,11 +72,59 @@ class Product(): Serializable, Observable {
         firmName = ""
     )
 
+    constructor(parcel: Parcel) : this() {
+        name = parcel.readString()!!
+        price = parcel.readString()!!
+        image = parcel.readString()!!
+        description = parcel.readString()!!
+        type = parcel.readString()!!
+        millesimal = parcel.readInt()
+        size = parcel.readDouble()
+        weight = parcel.readDouble()
+        incomingPrice = parcel.readDouble()
+        sellingPrice = parcel.readDouble()
+        shop = parcel.readString()!!
+        barCode = parcel.readString()!!
+        gramPrice = parcel.readDouble()
+        quantityPrice = parcel.readDouble()
+    }
+
     override fun removeOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
         callbacks.add(callback)
     }
 
     override fun addOnPropertyChangedCallback(callback: Observable.OnPropertyChangedCallback?) {
         callbacks.add(callback)
+    }
+
+    override fun writeToParcel(parcel: Parcel, flags: Int) {
+        parcel.writeString(name)
+        parcel.writeString(price)
+        parcel.writeString(image)
+        parcel.writeString(description)
+        parcel.writeString(type)
+        parcel.writeInt(millesimal)
+        parcel.writeDouble(size)
+        parcel.writeDouble(weight)
+        parcel.writeDouble(incomingPrice)
+        parcel.writeDouble(sellingPrice)
+        parcel.writeString(shop)
+        parcel.writeString(barCode)
+        parcel.writeDouble(gramPrice)
+        parcel.writeDouble(quantityPrice)
+    }
+
+    override fun describeContents(): Int {
+        return 0
+    }
+
+    companion object CREATOR : Parcelable.Creator<Product> {
+        override fun createFromParcel(parcel: Parcel): Product {
+            return Product(parcel)
+        }
+
+        override fun newArray(size: Int): Array<Product?> {
+            return arrayOfNulls(size)
+        }
     }
 }

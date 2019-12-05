@@ -6,8 +6,10 @@ import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.jewell.databinding.ProductFullViewItemBinding
 import com.example.jewell.models.Product
 
 class ProductFullViewActivity: AppCompatActivity() {
@@ -15,19 +17,22 @@ class ProductFullViewActivity: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.product_full_view_item)
+        val binding: ProductFullViewItemBinding =
+            DataBindingUtil.setContentView(this, R.layout.product_full_view_item)
+//        setContentView(R.layout.product_full_view_item)
 
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         Log.d(TAG, "onCreate: started")
-        getIncomingIntent()
+        getIncomingIntent(binding)
     }
 
-    private fun getIncomingIntent() {
+    private fun getIncomingIntent(binding: ProductFullViewItemBinding) {
         Log.d(TAG, "getIncomingIntent: checking for incoming intents.")
         var product: Product
         if (intent.hasExtra("product")) {
             product = intent.extras?.get("product") as Product
+            binding.product = product
             bind(product)
         }
     }
@@ -57,6 +62,7 @@ class ProductFullViewActivity: AppCompatActivity() {
         size.text = product.size.toString()
 
         var shop = findViewById<TextView>(R.id.fv_shop)
+        Log.d("FDS", "product shop is ${product.shop}")
         shop.text = product.shop
 
         var image = findViewById<ImageView>(R.id.fv_image)

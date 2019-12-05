@@ -10,7 +10,7 @@ class ProductPresenter {
     fun onProductClicked(view: View, product: Product) {
         Log.d("ProductPresenter", "inside onProductClicked")
         var intent = Intent(view.context, ProductFullViewActivity::class.java)
-//        intent.putExtra("product", product)
+        intent.putExtra("product", product)
         view.context.startActivity(intent)
     }
 }
