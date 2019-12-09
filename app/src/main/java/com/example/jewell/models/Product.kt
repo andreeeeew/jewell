@@ -2,13 +2,16 @@ package com.example.jewell.models
 
 import android.os.Parcel
 import android.os.Parcelable
+import android.util.Log
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import java.time.LocalDate
 
 
-class Product(): Observable, Parcelable {
+class Product(): Observable, Parcelable, ViewModel() {
     private val callbacks: PropertyChangeRegistry by lazy { PropertyChangeRegistry()}
     var name = ""
     var price = ""
@@ -16,7 +19,16 @@ class Product(): Observable, Parcelable {
     var image: String = ""
     var description = ""
     var arrivalDate = LocalDate.now()
-    var type = ""
+    @Bindable
+    var type = MutableLiveData<String>()
+    set(value) {
+        field = value
+        Log.d("Product", "Inside setter, field is ${field.value} and value is ${value.value}")
+    }
+    get() {
+        Log.d("Product", "Inside getter, field is ${field.value}")
+        return field
+    }
     var millesimal = 0
     var size = 0.0
     var weight = 0.0
@@ -52,7 +64,7 @@ class Product(): Observable, Parcelable {
         this.image = image
         this.description = description
         this.arrivalDate = arrivalDate
-        this.type = type
+        this.type.value = type
         this.millesimal = millesimal
         this.size = size
         this.weight = weight
@@ -77,7 +89,7 @@ class Product(): Observable, Parcelable {
         price = parcel.readString()!!
         image = parcel.readString()!!
         description = parcel.readString()!!
-        type = parcel.readString()!!
+        type.value = parcel.readString()!!
         millesimal = parcel.readInt()
         size = parcel.readDouble()
         weight = parcel.readDouble()
@@ -102,7 +114,7 @@ class Product(): Observable, Parcelable {
         parcel.writeString(price)
         parcel.writeString(image)
         parcel.writeString(description)
-        parcel.writeString(type)
+        parcel.writeString(type.value)
         parcel.writeInt(millesimal)
         parcel.writeDouble(size)
         parcel.writeDouble(weight)
@@ -126,5 +138,8 @@ class Product(): Observable, Parcelable {
         override fun newArray(size: Int): Array<Product?> {
             return arrayOfNulls(size)
         }
+    }
+    fun showType() {
+        Log.d("ProductFullViewActivity", "type is ${type.value}")
     }
 }

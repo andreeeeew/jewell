@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.jewell.DataSource
@@ -18,7 +19,7 @@ import com.example.jewell.view_decorator.TopSpacingItemDecoration
 import kotlinx.android.synthetic.main.products_fragment.view.*
 import kotlin.random.Random
 
-class ProductsRecyclerViewFragment(val makeVisible: Boolean) : Fragment() {
+class ProductsRecyclerViewFragment(val supportFragmentManager: FragmentManager, val makeVisible: Boolean) : Fragment() {
     private lateinit var inflatedView: View
     private lateinit var productAdapter: ProductRecyclerViewAdapter
     private lateinit var intent: Intent
@@ -30,7 +31,7 @@ class ProductsRecyclerViewFragment(val makeVisible: Boolean) : Fragment() {
     ): View? {
         inflatedView = inflater.inflate(R.layout.products_fragment, container, false)
         intent = Intent(context!!, BarCodeScannerActivity::class.java)
-        productAdapter = ProductRecyclerViewAdapter(context!!)
+        productAdapter = ProductRecyclerViewAdapter(context!!, supportFragmentManager)
         return inflatedView
     }
 

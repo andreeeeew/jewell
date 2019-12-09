@@ -48,7 +48,7 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
                     var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
 
                     val tr = supportFragmentManager.beginTransaction()
-                    tr.replace(R.id.inventorizationRelativeLayout, ProductsRecyclerViewFragment(true))
+                    tr.replace(R.id.inventorizationRelativeLayout, ProductsRecyclerViewFragment(supportFragmentManager, true))
                     tr.addToBackStack("products")
                     tr.commit()
 //                    addOnScrollListener(holder, superIntent)

@@ -19,7 +19,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private var mContext: Context
     private var stores: List<Store> = ArrayList()
     private val TAG = "StoreRecyclerViewAdapter"
-    private lateinit var supportFragmentManager: FragmentManager
+    private var supportFragmentManager: FragmentManager
 
     constructor(context: Context, supportFragmentManager: FragmentManager) : super() {
         mContext = context
@@ -46,7 +46,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
                     var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
                     val tr = supportFragmentManager.beginTransaction()
-                    tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment(false))
+                    tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment(supportFragmentManager, false))
                     tr.addToBackStack("products")
                     tr.commit()
 

@@ -10,6 +10,7 @@
         android:id="@+id/ll"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/invent_fab"
         android:weightSum="100">
 
 
@@ -19,7 +20,9 @@
             android:id="@+id/fv_image"
             android:layout_weight="80"
             android:scaleType="centerCrop"
-            android:src="@mipmap/ic_launcher"/>
+            android:src="@mipmap/ic_launcher"
+            android:onClick="@{() -> product.showType()}"
+            />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -71,7 +74,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/fv_type"
-            android:text="White Gold"
+            android:text="@={product.type}"
             android:textSize="20dp"
             android:layout_marginRight="@dimen/product_align_right"
             android:textColor="@color/product_type"

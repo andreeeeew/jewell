@@ -1,15 +1,18 @@
 package com.example.jewell.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
+import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.jewell.R
 import com.example.jewell.databinding.LayoutProductListItemBinding
+import com.example.jewell.fragment.FullViewFragment
 import com.example.jewell.models.Product
 import com.example.jewell.presenter.ProductPresenter
 import de.hdodenhof.circleimageview.CircleImageView
@@ -31,13 +34,15 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
                 .into(view)
         }
     }
+    private var supportFragmentManager: FragmentManager
     private var mContext: Context
     private var products: List<Product> = ArrayList()
     private val inventorised = HashSet<String>()
     private val TAG = "RecyclerViewAdapter"
 
-    constructor(context: Context) : super() {
+    constructor(context: Context, supportFragmentManager: FragmentManager) : super() {
         mContext = context
+        this.supportFragmentManager = supportFragmentManager
     }
 
 
@@ -59,6 +64,14 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         var product = products[position]
         holder.bind(product)
+        holder.itemView.setOnClickListener {
+            Log.d(TAG, "Store was clicked")
+
+            val tr = supportFragmentManager.beginTransaction()
+            tr.replace(R.id.productsRelativeLayout, FullViewFragment(product))
+            tr.addToBackStack("products")
+            tr.commit()
+        }
 //        when (holder) {
 //            is ProductViewHolder -> {
 //                holder.bind(products[position])

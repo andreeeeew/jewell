@@ -5,12 +5,14 @@ import com.example.jewell.models.Product
 import com.example.jewell.models.StockTaking
 import com.example.jewell.models.Store
 import java.time.LocalDate
+import kotlin.random.Random
 
 class DataSource{
 
     companion object {
 
         fun createProductsDataSet(): ArrayList<Product> {
+            var rand = Random.nextInt(0, 100)
             val list = ArrayList<Product>()
             list.add(
                 Product(
@@ -19,7 +21,7 @@ class DataSource{
                     "https://png.pngtree.com/png-clipart/20190603/original/pngtree-jewelry-png-image_530814.jpg",
                     "Gold",
                     LocalDate.now(),
-                    "White Gold",
+                    "White Gold +$rand",
                     585,
                     17.5,
                     18.5,
