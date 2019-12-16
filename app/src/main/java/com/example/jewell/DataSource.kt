@@ -10,10 +10,11 @@ import kotlin.random.Random
 class DataSource{
 
     companion object {
-
+        val list = ArrayList<Product>()
         fun createProductsDataSet(): ArrayList<Product> {
+            if (list.size != 0)
+                return list
             var rand = Random.nextInt(0, 100)
-            val list = ArrayList<Product>()
             list.add(
                 Product(
                     "Obraczka",
@@ -252,7 +253,7 @@ class DataSource{
                     1,
                     "01-234",
                     "Zlatodar",
-                    ArrayList<Product>(),
+                    createProductsDataSet(),
                     LocalDate.now()
                 )
             )
@@ -263,7 +264,7 @@ class DataSource{
                     1,
                     "01-234",
                     "Zlatodar",
-                    ArrayList<Product>(),
+                    createProductsDataSet(),
                     LocalDate.now()
                 )
             )
@@ -274,7 +275,7 @@ class DataSource{
                     1,
                     "01-234",
                     "Zlatodar",
-                    ArrayList<Product>(),
+                    createProductsDataSet(),
                     LocalDate.now()
                 )
             )
@@ -285,7 +286,7 @@ class DataSource{
                     1,
                     "01-234",
                     "Zlatodar",
-                    ArrayList<Product>(),
+                    createProductsDataSet(),
                     LocalDate.now()
                 )
             )
@@ -296,7 +297,7 @@ class DataSource{
                     1,
                     "01-234",
                     "Zlatodar",
-                    ArrayList<Product>(),
+                    createProductsDataSet(),
                     LocalDate.now()
                 )
             )
@@ -307,7 +308,7 @@ class DataSource{
                     1,
                     "01-234",
                     "Zlatodar",
-                    ArrayList<Product>(),
+                    createProductsDataSet(),
                     LocalDate.now()
                 )
             )

@@ -1,6 +1,7 @@
 package com.example.jewell.activity
 
 import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
@@ -14,12 +15,18 @@ class BarCodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
     private val TAG = "BarCodeScannerActivity"
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        Log.d(TAG, "OnCreate")
         super.onCreate(savedInstanceState)
         mScannerView = ZXingScannerView(this)
         setContentView(mScannerView)
+        var intent = Intent()
+        intent.putExtra("barcode", "1488")
+        setResult(RESULT_OK, intent)
+        finish()
     }
 
     override fun onResume() {
+        Log.d(TAG, "OnResume")
         super.onResume()
         mScannerView!!.setResultHandler(this)
         mScannerView!!.startCamera()
@@ -29,6 +36,8 @@ class BarCodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         super.onPause()
         mScannerView!!.stopCamera()
     }
+
+
 
     override fun handleResult(rawResult: Result?) {
         // Do something with the result here

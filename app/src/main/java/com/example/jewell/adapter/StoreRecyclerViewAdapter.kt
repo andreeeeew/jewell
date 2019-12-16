@@ -38,15 +38,21 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        val curStore = stores[position]
         when (holder) {
             is StoreViewHolder -> {
-                holder.bind(stores[position])
+                holder.bind(curStore)
                 holder.itemView.setOnClickListener {
                     Log.d(TAG, "Store was clicked")
 
                     var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
                     val tr = supportFragmentManager.beginTransaction()
-                    tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment(supportFragmentManager, false))
+                    tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment(
+                        supportFragmentManager,
+                        curStore.products,
+                        HashSet<String>(),
+                        false
+                    ))
                     tr.addToBackStack("products")
                     tr.commit()
 

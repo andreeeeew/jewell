@@ -6,7 +6,7 @@ import android.util.Log
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.databinding.PropertyChangeRegistry
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.ViewModel
 import java.time.LocalDate
 
@@ -19,8 +19,7 @@ class Product(): Observable, Parcelable, ViewModel() {
     var image: String = ""
     var description = ""
     var arrivalDate = LocalDate.now()
-    @Bindable
-    var type = MutableLiveData<String>()
+    var type = MediatorLiveData<String>()
     set(value) {
         field = value
         Log.d("Product", "Inside setter, field is ${field.value} and value is ${value.value}")
