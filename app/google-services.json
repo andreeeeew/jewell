@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "45081451328",
+    "firebase_url": "https://fir-first-39845.firebaseio.com",
+    "project_id": "fir-first-39845",
+    "storage_bucket": "fir-first-39845.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:45081451328:android:9267d7319d8e2e8fe3b8a5",
+        "android_client_info": {
+          "package_name": "com.example.jewell"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "45081451328-kmhk6lc206bgud2bjf92dmtc2t18qong.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCGIpSeNczFz5iQX6P9D9Jc4vzOJoXa6wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "45081451328-kmhk6lc206bgud2bjf92dmtc2t18qong.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
