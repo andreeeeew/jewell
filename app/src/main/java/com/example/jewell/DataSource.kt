@@ -197,7 +197,7 @@ class DataSource{
             return list
         }
 
-        fun createStoresDataSet(): List<Store> {
+        fun createStoresDataSet(): MutableList<Store> {
             val list = ArrayList<Store>()
             list.add(
                 Store(

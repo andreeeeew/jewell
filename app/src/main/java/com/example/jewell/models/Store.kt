@@ -10,4 +10,13 @@ data class Store(
     var zipCode: String,
     var name: String,
     var products: MutableList<Product>,
-    var lastInvent: String?): Serializable
+    var lastInvent: String?): Serializable {
+    constructor(): this(
+        "",
+        "",
+        0,
+        "",
+        "",
+        arrayListOf<Product>(),
+        "")
+}

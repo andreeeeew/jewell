@@ -110,6 +110,19 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         notifyDataSetChanged()
     }
 
+    fun modifyProduct(product: Product) {
+        val index = products.
+            indexOfFirst {
+                it.barCode == product.barCode }
+        Log.d(TAG, "index of first is $index")
+
+        products[products.
+            indexOfFirst {
+                it.barCode == product.barCode }] = product
+        notifyDataSetChanged()
+
+    }
+
     fun markProductAsInventorized(barcode: String) {
         inventorizedBarCodes.add(barcode)
         barcodeToViewHolder[barcode]?.binding?.productConstraintLayout?.setBackgroundColor(Color.GREEN)

@@ -78,6 +78,8 @@ class ProductsRecyclerViewFragment(
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+                productAdapter.modifyProduct(p0.getValue(Product::class.java)!!)
+                Log.d(TAG, "child changed -> ${p0.getValue(Product::class.java)}")
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {

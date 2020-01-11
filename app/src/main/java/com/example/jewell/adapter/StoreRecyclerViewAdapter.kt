@@ -17,7 +17,7 @@ import kotlinx.android.synthetic.main.layout_store_list_item.view.*
 
 class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private var mContext: Context
-    private var stores: List<Store> = ArrayList()
+    private var stores: MutableList<Store> = ArrayList()
     private val TAG = "StoreRecyclerViewAdapter"
     private var supportFragmentManager: FragmentManager
 
@@ -64,7 +64,12 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
     }
 
-    fun submitList(storesList: List<Store>) {
+    fun addStore(store: Store) {
+        stores.add(store)
+        notifyDataSetChanged()
+    }
+
+    fun submitList(storesList: MutableList<Store>) {
         stores = storesList
     }
 
