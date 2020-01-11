@@ -37,7 +37,6 @@ class ProductsRecyclerViewFragment(
     lateinit var mProductsDatabaseReference: DatabaseReference
     lateinit var mChildEventListener: ChildEventListener
 
-
     companion object {
         lateinit var lifecycleOwner: LifecycleOwner
     }
@@ -69,6 +68,7 @@ class ProductsRecyclerViewFragment(
 
         mFirebaseDatabase = FirebaseDatabase.getInstance()
         mProductsDatabaseReference = mFirebaseDatabase.reference.child("products")
+
 //        mProductsDatabaseReference.push().setValue(DataSource.createProductsDataSet()[0])
         mChildEventListener = object: ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
