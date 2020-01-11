@@ -17,12 +17,13 @@ import com.example.jewell.activity.BarCodeScannerActivity
 import com.example.jewell.adapter.ProductRecyclerViewAdapter
 import com.example.jewell.models.Product
 import com.example.jewell.view_decorator.TopSpacingItemDecoration
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.products_fragment.view.*
 import kotlin.random.Random
 
 class ProductsRecyclerViewFragment(
     val supportFragmentManager: FragmentManager,
-    val products: List<Product>,
+    val products: MutableList<Product>,
     val inventorizedBarCodes: HashSet<String>,
     val makeVisible: Boolean
 ) : Fragment() {
@@ -31,6 +32,11 @@ class ProductsRecyclerViewFragment(
     private lateinit var intent: Intent
     private val TAG = "ProductsRecyclerViewFragment"
     lateinit var barCodeToProduct: HashMap<String, Product>
+
+    lateinit var mFirebaseDatabase: FirebaseDatabase
+    lateinit var mProductsDatabaseReference: DatabaseReference
+    lateinit var mChildEventListener: ChildEventListener
+
 
     companion object {
         lateinit var lifecycleOwner: LifecycleOwner
@@ -60,6 +66,32 @@ class ProductsRecyclerViewFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val topSpacingItemDecoration = TopSpacingItemDecoration(30)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewProducts)
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance()
+        mProductsDatabaseReference = mFirebaseDatabase.reference.child("products")
+//        mProductsDatabaseReference.push().setValue(DataSource.createProductsDataSet()[0])
+        mChildEventListener = object: ChildEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+            }
+
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                var newProduct = p0.getValue(Product::class.java)
+                Log.d(TAG, "new product is $newProduct")
+                productAdapter.addProduct(newProduct!!)
+            }
+
+            override fun onChildRemoved(p0: DataSnapshot) {
+            }
+         }
+        mProductsDatabaseReference.addChildEventListener(mChildEventListener)
+
+
         recyclerView.layoutManager = LinearLayoutManager(context!!)
         recyclerView.adapter = productAdapter
         recyclerView.addItemDecoration(topSpacingItemDecoration)
@@ -67,7 +99,7 @@ class ProductsRecyclerViewFragment(
             Log.d("ALO", "Is visible")
             addOnScrollListener(view)
         }
-        productAdapter.submitProducts(products, inventorizedBarCodes)
+//        productAdapter.submitProducts(products, inventorizedBarCodes)
     }
 
     private fun addOnScrollListener(view: View) {

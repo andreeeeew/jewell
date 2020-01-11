@@ -9,5 +9,5 @@ data class Store(
     var ID: Int,
     var zipCode: String,
     var name: String,
-    var products: List<Product>,
+    var products: MutableList<Product>,
     var lastInvent: String?): Serializable

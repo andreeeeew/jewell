@@ -41,7 +41,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     private lateinit var lastProductViewHolder: ProductViewHolder
     private var supportFragmentManager: FragmentManager
     private var mContext: Context
-    private var products: List<Product> = ArrayList()
+    private var products: MutableList<Product> = ArrayList()
     private var inventorizedBarCodes = HashSet<String>()
     private val TAG = "RecyclerViewAdapter"
     lateinit var layoutProductListItemBinding: LayoutProductListItemBinding
@@ -97,11 +97,17 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     }
 
     fun submitProducts(
-        productList: List<Product>,
+        productList: MutableList<Product>,
         inventorizedBarCodes: HashSet<String>
     ) {
         products = productList
         this.inventorizedBarCodes = inventorizedBarCodes
+    }
+
+    fun addProduct(product: Product) {
+        //TODO(andreew) add to inventorized if it works
+        products.add(product)
+        notifyDataSetChanged()
     }
 
     fun markProductAsInventorized(barcode: String) {
