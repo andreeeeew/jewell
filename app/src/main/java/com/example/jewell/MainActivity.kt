@@ -1,13 +1,16 @@
 package com.example.jewell
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.LifecycleOwner
 import com.firebase.ui.auth.AuthUI
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
+
 
 class MainActivity : AppCompatActivity() {
     lateinit var mFirebaseAuth: FirebaseAuth
@@ -21,7 +24,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
         FirebaseDatabase.getInstance()
         mFirebaseAuth = FirebaseAuth.getInstance()
@@ -46,6 +48,21 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(this, BottomBarActivity::class.java)
         lifecycleOwner = this
         startActivity(intent)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == RC_SIGN_IN) {
+            if (resultCode == Activity.RESULT_OK) { // Sign-in succeeded, set up the UI
+                Toast.makeText(this, "Signed in!", Toast.LENGTH_SHORT).show()
+            } else if (resultCode == Activity.RESULT_CANCELED) { // Sign in was canceled by the user, finish the activity
+                Toast.makeText(this, "Sign in canceled", Toast.LENGTH_SHORT).show()
+                finish()
+            }
+        }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return true
     }
 
     override fun onResume() {
