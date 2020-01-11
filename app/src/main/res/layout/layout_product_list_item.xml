@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
-        <variable name="product" type="com.example.jewell.models.Product" />
+        <variable name="product" type="com.example.jewell.viewmodels.ProductViewModel" />
         <variable name="presenter" type="com.example.jewell.presenter.ProductPresenter" />
     </data>
 

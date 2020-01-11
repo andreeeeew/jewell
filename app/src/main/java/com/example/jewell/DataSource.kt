@@ -1,10 +1,8 @@
 package com.example.jewell
 
-import com.example.jewell.models.Firm
 import com.example.jewell.models.Product
 import com.example.jewell.models.StockTaking
 import com.example.jewell.models.Store
-import java.time.LocalDate
 import kotlin.random.Random
 
 class DataSource{
@@ -21,7 +19,7 @@ class DataSource{
                     "21.54",
                     "https://png.pngtree.com/png-clipart/20190603/original/pngtree-jewelry-png-image_530814.jpg",
                     "Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "White Gold +$rand",
                     585,
                     17.5,
@@ -32,12 +30,7 @@ class DataSource{
                     "1",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -46,7 +39,7 @@ class DataSource{
                     "91.52",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53158.jpg",
                     "Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     555,
                     11.5,
@@ -57,12 +50,7 @@ class DataSource{
                     "2",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
 
@@ -72,7 +60,7 @@ class DataSource{
                     "13.42",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53173.jpg",
                     "White gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -83,12 +71,7 @@ class DataSource{
                     "3",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -97,7 +80,7 @@ class DataSource{
                     "75.18",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53169.jpg",
                     "Steven",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -108,12 +91,7 @@ class DataSource{
                     "4",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -122,7 +100,7 @@ class DataSource{
                     "97.53",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53153.jpg",
                     "Silver",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -133,12 +111,7 @@ class DataSource{
                     "5",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -147,7 +120,7 @@ class DataSource{
                     "61.83",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53171.jpg",
                     "White Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -158,12 +131,7 @@ class DataSource{
                     "6",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -172,7 +140,7 @@ class DataSource{
                     "80.17",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "Silver",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -183,12 +151,7 @@ class DataSource{
                     "7",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -197,7 +160,7 @@ class DataSource{
                     "78.98",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "White Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -208,12 +171,7 @@ class DataSource{
                     "8",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -222,7 +180,7 @@ class DataSource{
                     "67.09",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -233,12 +191,7 @@ class DataSource{
                     "9",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             return list
@@ -254,7 +207,7 @@ class DataSource{
                     "01-234",
                     "Zlatodar",
                     createProductsDataSet(),
-                    LocalDate.now()
+                    "26.09.2018"
                 )
             )
             list.add(
@@ -265,7 +218,7 @@ class DataSource{
                     "01-234",
                     "Zlatodar",
                     createProductsDataSet(),
-                    LocalDate.now()
+                    "26.09.2018"
                 )
             )
             list.add(
@@ -276,7 +229,7 @@ class DataSource{
                     "01-234",
                     "Zlatodar",
                     createProductsDataSet(),
-                    LocalDate.now()
+                    "26.09.2018"
                 )
             )
             list.add(
@@ -287,7 +240,7 @@ class DataSource{
                     "01-234",
                     "Zlatodar",
                     createProductsDataSet(),
-                    LocalDate.now()
+                    "26.09.2018"
                 )
             )
             list.add(
@@ -298,7 +251,7 @@ class DataSource{
                     "01-234",
                     "Zlatodar",
                     createProductsDataSet(),
-                    LocalDate.now()
+                    "26.09.2018"
                 )
             )
             list.add(
@@ -309,7 +262,7 @@ class DataSource{
                     "01-234",
                     "Zlatodar",
                     createProductsDataSet(),
-                    LocalDate.now()
+                    "26.09.2018"
                 )
             )
             return list
@@ -320,7 +273,7 @@ class DataSource{
             val stockTakings = ArrayList<StockTaking>()
             var i = 0
             for (store in stores) {
-                val stockTaking = StockTaking(LocalDate.now(), null, i, stores[i])
+                val stockTaking = StockTaking("26.09.2018", null, i, stores[i])
                 stockTakings.add(stockTaking)
                 i++
             }

@@ -3,7 +3,7 @@
     <data>
         <variable
             name="product"
-            type="com.example.jewell.models.Product" />
+            type="com.example.jewell.viewmodels.ProductViewModel" />
     </data>
 
     <LinearLayout

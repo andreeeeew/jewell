@@ -1,8 +1,6 @@
 package com.example.jewell
 
-import com.example.jewell.models.Firm
 import com.example.jewell.models.Product
-import java.time.LocalDate
 
 class StoreDataSource{
 
@@ -16,7 +14,7 @@ class StoreDataSource{
                     "You made it to the end of the course!\r\n\r\nNext we'll be building the REST API!",
                     "https://png.pngtree.com/png-clipart/20190603/original/pngtree-jewelry-png-image_530814.jpg",
                     "Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "White Gold",
                     585,
                     17.5,
@@ -27,12 +25,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -41,7 +34,7 @@ class StoreDataSource{
                     "The REST API course is complete. You can find the videos here: https://codingwithmitch.com/courses/build-a-rest-api/.",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53158.jpg",
                     "Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     555,
                     11.5,
@@ -52,12 +45,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
 
@@ -67,7 +55,7 @@ class StoreDataSource{
                     "Justin has been producing online courses for YouTube, Udemy, and his website CodingForEntrepreneurs.com for over 5 years.",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53173.jpg",
                     "White gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -78,12 +66,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -92,7 +75,7 @@ class StoreDataSource{
                     "Vasiliy has been a freelance android developer for several years. He also has some of the best android development courses I've had the pleasure of taking on Udemy.com.",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53169.jpg",
                     "Steven",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -103,12 +86,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -117,7 +95,7 @@ class StoreDataSource{
                     "Freelancing as an Android developer with Donn Felker.\\r\\n\\r\\nDonn is also:\\r\\n\\r\\n1) Founder of caster.io\\r\\n\\r\\n2) Co-host of the fragmented podcast (fragmentedpodcast.com).",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53153.jpg",
                     "Silver",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -128,12 +106,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -142,7 +115,7 @@ class StoreDataSource{
                     "What kind of hobbies do software developers have? It sounds like many software developers don't have a lot of hobbies and choose to focus on work. Is that a good idea?",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53171.jpg",
                     "White Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -153,12 +126,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -167,7 +135,7 @@ class StoreDataSource{
                     "In this podcast I interviewed the Fullsnack Developer (AKA Nicholas Olsen).\\r\\n\\r\\nNicholas is many things. What I mean by that is, he's good at many things.\\r\\n\\r\\n1. He’s an entrepreneur\\r\\n\\r\\n2. Web developer\\r\\n\\r\\n3. Artist\\r\\n\\r\\n4. Graphic designer\\r\\n\\r\\n5. Musician (drums)\\r\\n\\r\\n6. Professional BodyBuilder.",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "Silver",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -178,12 +146,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -192,7 +155,7 @@ class StoreDataSource{
                     "Interviewing a web developer, javascript expert, entrepreneur, freelancer, podcaster, and much more.",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "White Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -203,12 +166,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             list.add(
@@ -217,7 +175,7 @@ class StoreDataSource{
                     "Kaushik Gopal is a Senior Android Engineer working in Silicon Valley.\r\n\r\nHe works as a Senior Staff engineer at Instacart.\r\n\r\nInstacart: https://www.instacart.com/",
                     "https://png.pngtree.com/template/20190121/ourlarge/pngtree-cosmetic-and-jewelry-image_53151.jpg",
                     "Gold",
-                    LocalDate.now(),
+                    "26.09.2018",
                     "Gold",
                     575,
                     14.5,
@@ -228,12 +186,7 @@ class StoreDataSource{
                     "1234567891011",
                     51.94,
                     1746.9,
-                    null,
-                    Firm(
-                        918267,
-                        0,
-                        "Diadema"
-                    )
+                    null
                 )
             )
             return list

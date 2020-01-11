@@ -4,18 +4,16 @@ import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.jewell.databinding.ProductFullViewItemBinding
-import com.example.jewell.models.Product
+import com.example.jewell.viewmodels.ProductViewModel
 
 class ProductFullViewActivity: AppCompatActivity() {
     private val TAG = "ProductFullViewActivity"
-    private lateinit var product: Product
+    private lateinit var product: ProductViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,12 +35,12 @@ class ProductFullViewActivity: AppCompatActivity() {
         Log.d(TAG, "getIncomingIntent: checking for incoming intents.")
 
         if (intent.hasExtra("product")) {
-            product = intent.extras?.get("product") as Product
+            product = intent.extras?.get("product") as ProductViewModel
             Log.d("ASD", "Product address in ProductFullViewActivity is ${System.identityHashCode(product)}")
-            product.type.observe(this, Observer {
-                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-            })
-            Log.d(TAG, "Product type is ${product.type.value}")
+//            product.type.observe(this, Observer {
+//                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+//            })
+            Log.d(TAG, "Product type is ${product.getType()}")
             binding.product = product
             bind(product)
         }
@@ -50,7 +48,7 @@ class ProductFullViewActivity: AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("ASD", "Activity was destroyed. product is ${product.type.value}")
+        Log.d("ASD", "Activity was destroyed. product is ${product.getType()}")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -64,7 +62,7 @@ class ProductFullViewActivity: AppCompatActivity() {
     }
 
     // TODO(andreew) finish binding
-    fun bind(product: Product) {
+    fun bind(product: ProductViewModel) {
 //        var arrivalDate = findViewById<TextView>(R.id.fv_arrival_date)
 //        arrivalDate.text = product.arrivalDate.toString()
 //
@@ -90,7 +88,7 @@ class ProductFullViewActivity: AppCompatActivity() {
         Glide
             .with(this)
             .applyDefaultRequestOptions(requestOptions)
-            .load(product.image)
+            .load(product.getImage())
             .into(image)
 
 

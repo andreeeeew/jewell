@@ -8,7 +8,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -17,6 +16,7 @@ import com.example.jewell.databinding.LayoutProductListItemBinding
 import com.example.jewell.fragment.FullViewFragment
 import com.example.jewell.models.Product
 import com.example.jewell.presenter.ProductPresenter
+import com.example.jewell.viewmodels.ProductViewModel
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.layout_product_list_item.view.*
 import java.io.Serializable
@@ -71,13 +71,16 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         //TODO(andreew) mark productsasinvetorized if it already is inventorized
         var product = products[position]
-        holder.bind(product)
+        var productVieModel = ProductViewModel(product)
+        holder.bind(productVieModel)
+
+
         barcodeToViewHolder[product.barCode] = holder
         backStackListener(holder, products[position])
         holder.itemView.setOnClickListener {
             Log.d(TAG, "R == 0")
             supportFragmentManager.beginTransaction()
-                .replace(R.id.productsRelativeLayout, FullViewFragment(product))
+                .replace(R.id.productsRelativeLayout, FullViewFragment(productVieModel))
                 .addToBackStack(FullViewFragment.BackStackName)
                 .commit()
         }
@@ -88,7 +91,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         supportFragmentManager.addOnBackStackChangedListener {
             val position: Int = supportFragmentManager.backStackEntryCount
             if (position == 0) {
-                holder.productType.text = product.type.value
+                holder.productType.text = product.type
             }
         }
     }
@@ -122,12 +125,12 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         val productType = itemView.product_type
         val TAG = "ProductViewHolder"
 
-        fun bind(product: Product) {
+        fun bind(product: ProductViewModel) {
             binding.product = product
             Log.d(TAG, "Product address is ${System.identityHashCode(product)}")
-            product.type.observeForever( Observer {
-                Log.d(TAG, "product type is ${product.type.value}")
-            })
+//            product.type.observeForever( Observer {
+//                Log.d(TAG, "product type is ${product.type.value}")
+//            })
             binding.executePendingBindings()
         }
     }
