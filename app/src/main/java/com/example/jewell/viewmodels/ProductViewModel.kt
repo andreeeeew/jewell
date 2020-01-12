@@ -3,7 +3,6 @@ package com.example.jewell.viewmodels
 import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
-import com.example.jewell.fragment.ProductsRecyclerViewFragment
 import com.example.jewell.models.Product
 
 class ProductViewModel(var product: Product, var key: String): BaseObservable() {
@@ -28,10 +27,7 @@ class ProductViewModel(var product: Product, var key: String): BaseObservable() 
     }
 
     fun setType(type: String) {
-        Log.d(TAG, "inside set type, new type is $type")
         product.type = type
-        val curProduct = ProductsRecyclerViewFragment.mProductsDatabaseReference.child(key)
-        curProduct.setValue(product)
     }
 
     @Bindable

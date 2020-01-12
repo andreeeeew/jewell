@@ -35,6 +35,13 @@ class FullViewFragment(val product: ProductViewModel): Fragment() {
         return binding.root
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "On destroy, with key equals to ${product.key} and barcode is ${product.product.barCode}")
+        val curProduct = ProductsRecyclerViewFragment.mProductsDatabaseReference.child(product.key)
+        curProduct.setValue(product.product)
+    }
+
     private fun getIncomingIntent(binding: ProductFullViewItemBinding) {
             Log.d(TAG, "Product type is ${product.getType()}")
             binding.product = product

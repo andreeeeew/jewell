@@ -58,7 +58,7 @@ class ProductsRecyclerViewFragment(
     private fun populateBarCodeToProduct() {
         barCodeToProduct = HashMap()
         products.forEach {
-            barCodeToProduct.put(it.barCode, it)
+            barCodeToProduct[it.barCode] = it
         }
     }
 
@@ -79,8 +79,8 @@ class ProductsRecyclerViewFragment(
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                productAdapter.modifyProduct(p0.getValue(Product::class.java)!!)
                 Log.d(TAG, "child changed -> ${p0.getValue(Product::class.java)}")
+                productAdapter.modifyProduct(p0.getValue(Product::class.java)!!)
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {

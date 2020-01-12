@@ -42,6 +42,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     private var supportFragmentManager: FragmentManager
     private var mContext: Context
     private var products: MutableList<Product> = ArrayList()
+    private var productsViewModels: MutableList<ProductViewModel> = ArrayList()
     private var keys: MutableList<String> = ArrayList()
     private var inventorizedBarCodes = HashSet<String>()
     private val TAG = "RecyclerViewAdapter"
@@ -72,9 +73,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
         //TODO(andreew) mark products as invetorized if it's already inventorized
         var product = products[position]
-        var key = keys[position]
-        var productVieModel = ProductViewModel(product, key)
-        holder.bind(productVieModel)
+        holder.bind(productsViewModels[position])
 
 
         barcodeToViewHolder[product.barCode] = holder
@@ -82,7 +81,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         holder.itemView.setOnClickListener {
             Log.d(TAG, "R == 0")
             supportFragmentManager.beginTransaction()
-                .replace(R.id.productsRelativeLayout, FullViewFragment(productVieModel))
+                .replace(R.id.productsRelativeLayout, FullViewFragment(productsViewModels[position]))
                 .addToBackStack(FullViewFragment.BackStackName)
                 .commit()
         }
@@ -110,20 +109,22 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         //TODO(andreew) add to inventorized if it works
         products.add(product)
         keys.add(key)
+        productsViewModels.add(ProductViewModel(product, key))
         notifyDataSetChanged()
     }
 
     fun modifyProduct(product: Product) {
+        Log.d(TAG, "new modified product is ${product.toString()}")
         val index = products.
             indexOfFirst {
-                it.barCode == product.barCode }
+                it.barCode == product.barCode
+            }
         Log.d(TAG, "index of first is $index")
-
-        products[products.
-            indexOfFirst {
-                it.barCode == product.barCode }] = product
+        products[index] = product
+        productsViewModels[index].product = product
+        Log.d(TAG, "new product is ${products[index]} and coresponding viewmodel product is ${productsViewModels[index].product}")
         notifyDataSetChanged()
-
+//        notifyItemChanged(index)
     }
 
     fun markProductAsInventorized(barcode: String) {
@@ -149,10 +150,6 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
 
         fun bind(product: ProductViewModel) {
             binding.product = product
-            Log.d(TAG, "Product address is ${System.identityHashCode(product)}")
-//            product.type.observeForever( Observer {
-//                Log.d(TAG, "product type is ${product.type.value}")
-//            })
             binding.executePendingBindings()
         }
     }

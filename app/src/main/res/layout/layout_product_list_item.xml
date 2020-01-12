@@ -56,7 +56,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_toEndOf="@+id/product_image"
-                    android:text="@={product.type}"
+                    android:text="@{product.type}"
                     android:textColor="@color/product_type"
                     android:textSize="15sp" />
 
