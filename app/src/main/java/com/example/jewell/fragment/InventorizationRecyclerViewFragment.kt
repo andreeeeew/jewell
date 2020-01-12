@@ -11,17 +11,22 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.jewell.DataSource
 import com.example.jewell.R
 import com.example.jewell.activity.BarCodeScannerActivity
 import com.example.jewell.adapter.InventorisationRecyclerViewAdapter
+import com.example.jewell.models.StockTaking
 import com.example.jewell.view_decorator.TopSpacingItemDecoration
+import com.google.firebase.database.*
 
 
 class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentManager) : Fragment() {
     private lateinit var inflatedView: View
     private lateinit var inventorisationAdapter: InventorisationRecyclerViewAdapter
     private lateinit var intent: Intent
+
+    lateinit var mFirebaseDatabase: FirebaseDatabase
+    lateinit var mInventorizationsDatabaseReference: DatabaseReference
+    lateinit var mChildEventListener: ChildEventListener
 
 
     override fun onCreateView(
@@ -38,27 +43,32 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val topSpacingItemDecoration = TopSpacingItemDecoration(30)
         val recyclerView = view.findViewById<RecyclerView>(R.id.recyclerViewInventorizations)
+
+        mFirebaseDatabase = FirebaseDatabase.getInstance()
+        mInventorizationsDatabaseReference = mFirebaseDatabase.reference.child("inventorizations")
+        mChildEventListener = object : ChildEventListener {
+            override fun onCancelled(p0: DatabaseError) {
+            }
+
+            override fun onChildMoved(p0: DataSnapshot, p1: String?) {
+            }
+
+            override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+            }
+
+            override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                val inventorization = p0.getValue(StockTaking::class.java)
+                inventorisationAdapter.addInventorization(inventorization!!)
+            }
+
+            override fun onChildRemoved(p0: DataSnapshot) {
+            }
+        }
+        mInventorizationsDatabaseReference.addChildEventListener(mChildEventListener)
+
         recyclerView.layoutManager = LinearLayoutManager(context!!)
         recyclerView.adapter = inventorisationAdapter
         recyclerView.addItemDecoration(topSpacingItemDecoration)
-        addDataSet()
-
-//        val fab = view.findViewById<FloatingActionButton>(R.id.inventorization_fab)
-//        recyclerView.addOnScrollListener(object: RecyclerView.OnScrollListener() {
-//            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-//                super.onScrolled(recyclerView, dx, dy)
-//                if (dy > 0 && fab.visibility == View.VISIBLE) {
-//                    fab.hide()
-//                } else if (dy < 0 && fab.visibility != View.VISIBLE) {
-//                    fab.show()
-//                }
-//            }
-//        })
-//
-//        fab.setOnClickListener {
-//            Log.d("DSA", "FAB was clicked")
-//            startActivityForResult(intent, 0)
-//        }
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -74,8 +84,4 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
         }
     }
 
-    fun addDataSet() {
-        val data = DataSource.createInventorizationsDataSet()
-        inventorisationAdapter.submitList(data)
-    }
 }

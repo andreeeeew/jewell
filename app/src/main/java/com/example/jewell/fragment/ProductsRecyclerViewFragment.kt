@@ -24,7 +24,7 @@ import kotlin.random.Random
 class ProductsRecyclerViewFragment(
     val supportFragmentManager: FragmentManager,
     val products: MutableList<Product>,
-    val inventorizedBarCodes: HashSet<String>,
+    val inventorizedBarCodes: MutableList<String>,
     val makeVisible: Boolean
 ) : Fragment() {
     private lateinit var inflatedView: View

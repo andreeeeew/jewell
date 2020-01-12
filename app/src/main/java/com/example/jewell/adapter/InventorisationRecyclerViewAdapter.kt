@@ -19,9 +19,9 @@ import kotlinx.android.synthetic.main.products_fragment.view.*
 
 open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private var mContext: Context
-    private var inventorizations: List<StockTaking> = ArrayList()
+    private var inventorizations: MutableList<StockTaking> = ArrayList()
     private val TAG = "InventorizationRecyclerViewAdapter"
-    private lateinit var supportFragmentManager: FragmentManager
+    private var supportFragmentManager: FragmentManager
 
     constructor(context: Context, supportFragmentManager: FragmentManager) : super() {
         mContext = context
@@ -85,8 +85,9 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
 //        }
     }
 
-    fun submitList(inventorizationList: List<StockTaking>) {
-        inventorizations = inventorizationList
+    fun addInventorization(inventorization: StockTaking) {
+        inventorizations.add(inventorization)
+        notifyDataSetChanged()
     }
 
     class InventorizationViewHolder constructor(

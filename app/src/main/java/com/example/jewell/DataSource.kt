@@ -273,7 +273,7 @@ class DataSource{
             val stockTakings = ArrayList<StockTaking>()
             var i = 0
             for (store in stores) {
-                val stockTaking = StockTaking("26.09.2018", null, i, stores[i])
+                val stockTaking = StockTaking("26.09.2018", null, i, stores[i], ArrayList())
                 stockTakings.add(stockTaking)
                 i++
             }

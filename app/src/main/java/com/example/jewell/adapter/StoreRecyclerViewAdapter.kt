@@ -50,7 +50,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment(
                         supportFragmentManager,
                         curStore.products,
-                        HashSet<String>(),
+                        ArrayList(),
                         false
                     ))
                     tr.addToBackStack("products")
