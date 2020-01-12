@@ -75,11 +75,10 @@
             android:layout_height="wrap_content"
             android:id="@+id/fv_type"
             android:text="@={product.type}"
-            android:textSize="20dp"
-            android:layout_marginRight="@dimen/product_align_right"
+            android:textSize="20sp"
+            android:layout_marginEnd="@dimen/product_align_right"
             android:textColor="@color/product_type"
-            android:layout_weight="9"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:gravity="center"/>
         </RelativeLayout>
 

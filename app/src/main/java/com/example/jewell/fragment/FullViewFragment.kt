@@ -28,11 +28,9 @@ class FullViewFragment(val product: ProductViewModel): Fragment() {
                 .apply {
                 }
         getIncomingIntent(binding)
-        Log.d(TAG, "Product address is ${System.identityHashCode(product)}")
 //        product.type.observe(this, Observer {
 //            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
 //        })
-        Log.d(TAG, "Product address is ${System.identityHashCode(product)}")
 
         return binding.root
     }

@@ -33,12 +33,13 @@ class ProductsRecyclerViewFragment(
     private val TAG = "ProductsRecyclerViewFragment"
     lateinit var barCodeToProduct: HashMap<String, Product>
 
-    lateinit var mFirebaseDatabase: FirebaseDatabase
-    lateinit var mProductsDatabaseReference: DatabaseReference
+
     lateinit var mChildEventListener: ChildEventListener
 
     companion object {
         lateinit var lifecycleOwner: LifecycleOwner
+        lateinit var mFirebaseDatabase: FirebaseDatabase
+        lateinit var mProductsDatabaseReference: DatabaseReference
     }
 
     override fun onCreateView(
@@ -83,9 +84,10 @@ class ProductsRecyclerViewFragment(
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
+                Log.d(TAG, "key is ${p0.key}")
                 var newProduct = p0.getValue(Product::class.java)
                 Log.d(TAG, "new product is $newProduct")
-                productAdapter.addProduct(newProduct!!)
+                productAdapter.addProduct(newProduct!!, p0.key!!)
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {

@@ -42,6 +42,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     private var supportFragmentManager: FragmentManager
     private var mContext: Context
     private var products: MutableList<Product> = ArrayList()
+    private var keys: MutableList<String> = ArrayList()
     private var inventorizedBarCodes = HashSet<String>()
     private val TAG = "RecyclerViewAdapter"
     lateinit var layoutProductListItemBinding: LayoutProductListItemBinding
@@ -69,9 +70,10 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        //TODO(andreew) mark productsasinvetorized if it already is inventorized
+        //TODO(andreew) mark products as invetorized if it's already inventorized
         var product = products[position]
-        var productVieModel = ProductViewModel(product)
+        var key = keys[position]
+        var productVieModel = ProductViewModel(product, key)
         holder.bind(productVieModel)
 
 
@@ -104,9 +106,10 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         this.inventorizedBarCodes = inventorizedBarCodes
     }
 
-    fun addProduct(product: Product) {
+    fun addProduct(product: Product, key: String) {
         //TODO(andreew) add to inventorized if it works
         products.add(product)
+        keys.add(key)
         notifyDataSetChanged()
     }
 
