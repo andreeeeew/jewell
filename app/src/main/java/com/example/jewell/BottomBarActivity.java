@@ -21,6 +21,8 @@ import com.example.jewell.fragment.StoresRecyclerViewFragment;
 import com.example.jewell.general_view.BubbleNavigationLinearView;
 import com.example.jewell.general_view.listener.BubbleNavigationChangeListener;
 import com.example.jewell.models.Product;
+import com.example.jewell.models.StockTaking;
+import com.example.jewell.viewmodels.StockTakingViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,7 +51,7 @@ public class BottomBarActivity extends AppCompatActivity {
         ArrayList<Fragment> fragList = new ArrayList<>();
 //        RecyclerView recyclerView = findViewById(R.id.recycler_view);
 //        fragList.add(recyclerView);
-        fragList.add(new ProductsRecyclerViewFragment(getSupportFragmentManager(), retrieveAllProducts(), new ArrayList<String>(), false));
+        fragList.add(new ProductsRecyclerViewFragment(getSupportFragmentManager(), retrieveAllProducts(), new StockTakingViewModel(new StockTaking(), ""), false));
         fragList.add(new StoresRecyclerViewFragment(getSupportFragmentManager()));
         fragList.add(new InventorizationRecyclerViewFragment(getSupportFragmentManager()));
 //        fragList.add(ScreenSlidePageFragment.newInstance("Invent", R.color.red_inactive));

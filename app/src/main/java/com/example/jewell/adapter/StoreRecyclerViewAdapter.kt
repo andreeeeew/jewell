@@ -12,7 +12,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.jewell.R
 import com.example.jewell.fragment.ProductsRecyclerViewFragment
+import com.example.jewell.models.StockTaking
 import com.example.jewell.models.Store
+import com.example.jewell.viewmodels.StockTakingViewModel
 import kotlinx.android.synthetic.main.layout_store_list_item.view.*
 
 class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -50,7 +52,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     tr.replace(R.id.storeRelativeLayout, ProductsRecyclerViewFragment(
                         supportFragmentManager,
                         curStore.products,
-                        ArrayList(),
+                        StockTakingViewModel(StockTaking(), ""),
                         false
                     ))
                     tr.addToBackStack("products")

@@ -44,12 +44,13 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     private var products: MutableList<Product> = ArrayList()
     private var productsViewModels: MutableList<ProductViewModel> = ArrayList()
     private var keys: MutableList<String> = ArrayList()
-    private var inventorizedBarCodes = HashSet<String>()
+    private lateinit var inventorizedBarCodes: MutableList<String>
     private val TAG = "RecyclerViewAdapter"
     lateinit var layoutProductListItemBinding: LayoutProductListItemBinding
     private val barcodeToViewHolder: HashMap<String, ProductViewHolder> = HashMap()
 
-    constructor(context: Context, supportFragmentManager: FragmentManager) : super() {
+    constructor(context: Context, supportFragmentManager: FragmentManager, inventorizedBarCodes: MutableList<String>) : super() {
+        this.inventorizedBarCodes = inventorizedBarCodes
         mContext = context
         this.supportFragmentManager = supportFragmentManager
     }
@@ -71,12 +72,13 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     }
 
     override fun onBindViewHolder(holder: ProductViewHolder, position: Int) {
-        //TODO(andreew) mark products as invetorized if it's already inventorized
         var product = products[position]
         holder.bind(productsViewModels[position])
-
-
         barcodeToViewHolder[product.barCode] = holder
+        if (inventorizedBarCodes.contains(product.barCode)) {
+            holder.binding.productConstraintLayout.setBackgroundColor(Color.GREEN)
+        }
+
         backStackListener(holder, products[position])
         holder.itemView.setOnClickListener {
             Log.d(TAG, "R == 0")
@@ -95,14 +97,6 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
                 holder.productType.text = product.type
             }
         }
-    }
-
-    fun submitProducts(
-        productList: MutableList<Product>,
-        inventorizedBarCodes: HashSet<String>
-    ) {
-        products = productList
-        this.inventorizedBarCodes = inventorizedBarCodes
     }
 
     fun addProduct(product: Product, key: String) {
@@ -128,6 +122,8 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     }
 
     fun markProductAsInventorized(barcode: String) {
+        if (inventorizedBarCodes.contains(barcode))
+            return
         inventorizedBarCodes.add(barcode)
         barcodeToViewHolder[barcode]?.binding?.productConstraintLayout?.setBackgroundColor(Color.GREEN)
     }

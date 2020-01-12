@@ -1,6 +1,5 @@
 package com.example.jewell.fragment
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -17,6 +16,7 @@ import com.example.jewell.activity.BarCodeScannerActivity
 import com.example.jewell.adapter.ProductRecyclerViewAdapter
 import com.example.jewell.models.Product
 import com.example.jewell.view_decorator.TopSpacingItemDecoration
+import com.example.jewell.viewmodels.StockTakingViewModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.products_fragment.view.*
 import kotlin.random.Random
@@ -24,7 +24,7 @@ import kotlin.random.Random
 class ProductsRecyclerViewFragment(
     val supportFragmentManager: FragmentManager,
     val products: MutableList<Product>,
-    val inventorizedBarCodes: MutableList<String>,
+    val stockTakingViewModel: StockTakingViewModel,
     val makeVisible: Boolean
 ) : Fragment() {
     private lateinit var inflatedView: View
@@ -50,7 +50,7 @@ class ProductsRecyclerViewFragment(
         lifecycleOwner = this
         inflatedView = inflater.inflate(R.layout.products_fragment, container, false)
         intent = Intent(context!!, BarCodeScannerActivity::class.java)
-        productAdapter = ProductRecyclerViewAdapter(context!!, supportFragmentManager)
+        productAdapter = ProductRecyclerViewAdapter(context!!, supportFragmentManager, stockTakingViewModel.stockTaking.inventorizedBarCodes)
         populateBarCodeToProduct()
         return inflatedView
     }
@@ -124,6 +124,11 @@ class ProductsRecyclerViewFragment(
             val barcode = Random.nextInt(1, 9).toString()
             Log.d("DSA", "FAB was clicked, barcode is $barcode")
             productAdapter.markProductAsInventorized(barcode)
+
+            InventorizationRecyclerViewFragment
+                .mInventorizationsDatabaseReference
+                .child(stockTakingViewModel.key).setValue(stockTakingViewModel.stockTaking)
+
 //            startActivityForResult(intent, 0)
             //TODO(andreew) pass barCodeToProduct to this activity
             startActivityForResult(intent, 1337)
@@ -131,16 +136,16 @@ class ProductsRecyclerViewFragment(
     }
 
     // TODO (andreew) rather don't need it. Need to pass hashmap to barcode scanner and play with it there
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        Log.d("SDA", "requestcode is $requestCode resultcode is $resultCode")
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode === 1337) {
-            Log.d("SDA", "resultcode is 0")
-            if (resultCode === Activity.RESULT_OK) { // contents contains whatever was encoded
-                val contents: String = data!!.getStringExtra("barcode")
-                productAdapter.markProductAsInventorized("123")
-                Log.d("DSA", "contents is $contents")
-            }
-        }
-    }
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        Log.d("SDA", "requestcode is $requestCode resultcode is $resultCode")
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode === 1337) {
+//            Log.d("SDA", "resultcode is 0")
+//            if (resultCode === Activity.RESULT_OK) { // contents contains whatever was encoded
+//                val contents: String = data!!.getStringExtra("barcode")
+//                productAdapter.markProductAsInventorized("123")
+//                Log.d("DSA", "contents is $contents")
+//            }
+//        }
+//    }
 }

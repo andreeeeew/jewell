@@ -20,13 +20,16 @@ import com.google.firebase.database.*
 
 
 class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentManager) : Fragment() {
+    private val TAG = "InventorizationRecyclerViewFragment"
     private lateinit var inflatedView: View
     private lateinit var inventorisationAdapter: InventorisationRecyclerViewAdapter
     private lateinit var intent: Intent
 
-    lateinit var mFirebaseDatabase: FirebaseDatabase
-    lateinit var mInventorizationsDatabaseReference: DatabaseReference
-    lateinit var mChildEventListener: ChildEventListener
+    companion object {
+        lateinit var mFirebaseDatabase: FirebaseDatabase
+        lateinit var mInventorizationsDatabaseReference: DatabaseReference
+        lateinit var mChildEventListener: ChildEventListener
+    }
 
 
     override fun onCreateView(
@@ -54,6 +57,7 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
+                Log.d(TAG, "child changed, new child is ${p0.getValue(StockTaking::class.java)}")
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
@@ -69,6 +73,12 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
         recyclerView.layoutManager = LinearLayoutManager(context!!)
         recyclerView.adapter = inventorisationAdapter
         recyclerView.addItemDecoration(topSpacingItemDecoration)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "We are resumed!!")
+        inventorisationAdapter.notifyDataSetChanged()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

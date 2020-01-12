@@ -64,7 +64,7 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val curInventorization = inventorizations[position]
+        val curInventorization = inventorizationsViewModels[position]
         when (holder) {
             is InventorizationViewHolder -> {
                 holder.bind(inventorizationsViewModels[position])
@@ -74,14 +74,9 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
                     var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
 
                     val tr = supportFragmentManager.beginTransaction()
-                    tr.replace(R.id.inventorizationRelativeLayout, ProductsRecyclerViewFragment(supportFragmentManager, curInventorization.store.products, curInventorization.inventorizedBarCodes, true))
+                    tr.replace(R.id.inventorizationRelativeLayout, ProductsRecyclerViewFragment(supportFragmentManager, curInventorization.stockTaking.store.products, curInventorization, true))
                     tr.addToBackStack("products")
                     tr.commit()
-//                    addOnScrollListener(holder, superIntent)
-
-//                    var intent = Intent(mContext, ProductFullViewActivity::class.java)
-//                    intent.putExtra("inventorization", inventorizations[position])
-//                    mContext.startActivity(superIntent)
                 }
             }
         }
