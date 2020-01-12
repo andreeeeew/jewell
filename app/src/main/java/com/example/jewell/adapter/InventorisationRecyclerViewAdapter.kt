@@ -6,22 +6,46 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.example.jewell.R
+import com.example.jewell.databinding.LayoutInventorizationListItemBinding
 import com.example.jewell.fragment.ProductsRecyclerViewFragment
 import com.example.jewell.models.StockTaking
+import com.example.jewell.viewmodels.StockTakingViewModel
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.layout_inventorization_list_item.view.*
 import kotlinx.android.synthetic.main.products_fragment.view.*
+import java.io.Serializable
 
 
 open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder> {
+    companion object DataBindingAdapter: Serializable {
+        @BindingAdapter("bind:inventorization_image_url")
+        @JvmStatic
+        fun loadImage(view: CircleImageView, url: String) {
+            val requestOptions = RequestOptions()
+                .placeholder(R.drawable.ic_launcher_background)
+                .error(R.drawable.ic_launcher_background)
+            Glide.with(view.context)
+                .applyDefaultRequestOptions(requestOptions)
+                .load(url)
+                .into(view)
+        }
+        val BackStackName = "Products"
+    }
+
+
     private var mContext: Context
     private var inventorizations: MutableList<StockTaking> = ArrayList()
+    private var keys: MutableList<String> = ArrayList()
+    private var inventorizationsViewModels: MutableList<StockTakingViewModel> = ArrayList()
     private val TAG = "InventorizationRecyclerViewAdapter"
     private var supportFragmentManager: FragmentManager
+    lateinit var layoutInventorizationListItemBinding: LayoutInventorizationListItemBinding
 
     constructor(context: Context, supportFragmentManager: FragmentManager) : super() {
         mContext = context
@@ -30,9 +54,9 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        return InventorizationViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.layout_inventorization_list_item, parent, false)
-        )
+        val layoutInflater = LayoutInflater.from(parent.context)
+        layoutInventorizationListItemBinding = LayoutInventorizationListItemBinding.inflate(layoutInflater, parent, false)
+        return InventorizationViewHolder(layoutInventorizationListItemBinding)
     }
 
     override fun getItemCount(): Int {
@@ -43,7 +67,8 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
         val curInventorization = inventorizations[position]
         when (holder) {
             is InventorizationViewHolder -> {
-                holder.bind(curInventorization)
+                holder.bind(inventorizationsViewModels[position])
+
                 holder.itemView.setOnClickListener {
                     Log.d(TAG, "inventorization was clicked")
                     var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
@@ -85,31 +110,43 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
 //        }
     }
 
-    fun addInventorization(inventorization: StockTaking) {
-        inventorizations.add(inventorization)
+    fun addInventorization(stockTaking: StockTaking, key: String) {
+        inventorizations.add(stockTaking)
+        keys.add(key)
+        inventorizationsViewModels.add(StockTakingViewModel(stockTaking, key))
         notifyDataSetChanged()
     }
 
     class InventorizationViewHolder constructor(
         itemView: View
     ): RecyclerView.ViewHolder(itemView){
+
+        lateinit var binding: LayoutInventorizationListItemBinding
+        constructor(binding: LayoutInventorizationListItemBinding): this(binding.root) {
+            this.binding = binding
+        }
+
+
         val inventorizationImage = itemView.inventorization_image
         val inventorizationStoreName = itemView.inventorization_store_name
 //        val inventorizationLastInvent = itemView.inventorization_last_inventorization
 
-        fun bind(inventorization: StockTaking) {
-            inventorizationStoreName.text = inventorization.store.name
-//            inventorizationProducts.text = inventorization.products.size.toString()
-//            inventorizationLastInvent.text = inventorization.lastInvent.toString()
+        fun bind(inventorization: StockTakingViewModel) {
+            binding.inventorization = inventorization
+            binding.executePendingBindings()
 
-            val requestOptions = RequestOptions()
-                .placeholder(R.drawable.ic_launcher_background)
-                .error(R.drawable.ic_launcher_background)
-
-            Glide.with(itemView.context)
-                .applyDefaultRequestOptions(requestOptions)
-                .load(inventorization.store.image)
-                .into(inventorizationImage)
+//            inventorizationStoreName.text = inventorization.store.name
+////            inventorizationProducts.text = inventorization.products.size.toString()
+////            inventorizationLastInvent.text = inventorization.lastInvent.toString()
+//
+//            val requestOptions = RequestOptions()
+//                .placeholder(R.drawable.ic_launcher_background)
+//                .error(R.drawable.ic_launcher_background)
+//
+//            Glide.with(itemView.context)
+//                .applyDefaultRequestOptions(requestOptions)
+//                .load(inventorization.store.image)
+//                .into(inventorizationImage)
         }
     }
 }

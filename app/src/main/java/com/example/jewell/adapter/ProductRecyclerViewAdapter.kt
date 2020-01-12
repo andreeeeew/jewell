@@ -137,7 +137,6 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         itemView: View
     ): RecyclerView.ViewHolder(itemView){
 
-
         lateinit var binding: LayoutProductListItemBinding
         constructor(binding: LayoutProductListItemBinding) : this(binding.root) {
             this.binding = binding
