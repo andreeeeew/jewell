@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.example.jewell.R
 import com.example.jewell.databinding.ProductFullViewItemBinding
 import com.example.jewell.viewmodels.ProductViewModel
@@ -43,7 +45,16 @@ class FullViewFragment(val product: ProductViewModel): Fragment() {
     }
 
     private fun getIncomingIntent(binding: ProductFullViewItemBinding) {
-            Log.d(TAG, "Product type is ${product.getType()}")
-            binding.product = product
-        }
+        Log.d(TAG, "Product type is ${product.getType()}")
+        binding.product = product
+        val requestOptions = RequestOptions()
+            .placeholder(R.drawable.ic_launcher_background)
+            .error(R.drawable.ic_launcher_background)
+
+        Glide.with(this)
+            .applyDefaultRequestOptions(requestOptions)
+            .load(product.getImage())
+            .into(binding.fvImage)
+    }
+
 }
