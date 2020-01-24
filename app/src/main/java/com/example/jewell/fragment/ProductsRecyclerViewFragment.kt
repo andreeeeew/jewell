@@ -28,7 +28,7 @@ class ProductsRecyclerViewFragment(
     val makeVisible: Boolean
 ) : Fragment() {
     private lateinit var inflatedView: View
-    private lateinit var productAdapter: ProductRecyclerViewAdapter
+    var productAdapter: ProductRecyclerViewAdapter? = null
     private lateinit var intent: Intent
     private val TAG = "ProductsRecyclerViewFragment"
     lateinit var barCodeToProduct: HashMap<String, Product>
@@ -80,14 +80,14 @@ class ProductsRecyclerViewFragment(
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
                 Log.d(TAG, "child changed -> ${p0.getValue(Product::class.java)}")
-                productAdapter.modifyProduct(p0.getValue(Product::class.java)!!)
+                productAdapter!!.modifyProduct(p0.getValue(Product::class.java)!!)
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
                 Log.d(TAG, "key is ${p0.key}")
                 var newProduct = p0.getValue(Product::class.java)
                 Log.d(TAG, "new product is $newProduct")
-                productAdapter.addProduct(newProduct!!, p0.key!!)
+                productAdapter!!.addProduct(newProduct!!, p0.key!!)
             }
 
             override fun onChildRemoved(p0: DataSnapshot) {
@@ -123,7 +123,7 @@ class ProductsRecyclerViewFragment(
         fab.setOnClickListener {
             val barcode = Random.nextInt(1, 9).toString()
             Log.d("DSA", "FAB was clicked, barcode is $barcode")
-            productAdapter.markProductAsInventorized(barcode)
+            productAdapter!!.markProductAsInventorized(barcode)
 
             InventorizationRecyclerViewFragment
                 .mInventorizationsDatabaseReference

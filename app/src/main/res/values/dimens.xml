@@ -11,6 +11,6 @@
     <dimen name="default_nav_item_badge_text_size">7sp</dimen>
     <dimen name="product_label_align_left">11dp</dimen>
     <dimen name="product_align_right">12dp</dimen>
-    <dimen name="product_label_vertical_disctance">18dp</dimen>
+    <dimen name="product_label_vertical_disctance">1dp</dimen>
 
 </resources>

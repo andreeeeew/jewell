@@ -58,6 +58,8 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
                 Log.d(TAG, "child changed, new child is ${p0.getValue(StockTaking::class.java)}")
+                val inventorization = p0.getValue(StockTaking::class.java)
+                inventorisationAdapter.addInventorizedProducts(inventorization!!, p0.key!!)
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {

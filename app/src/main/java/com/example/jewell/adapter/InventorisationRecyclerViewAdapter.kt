@@ -43,6 +43,7 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
     private var inventorizations: MutableList<StockTaking> = ArrayList()
     private var keys: MutableList<String> = ArrayList()
     private var inventorizationsViewModels: MutableList<StockTakingViewModel> = ArrayList()
+    private var inventIdToViewFragment: HashMap<Int, ProductsRecyclerViewFragment> = HashMap()
     private val TAG = "InventorizationRecyclerViewAdapter"
     private var supportFragmentManager: FragmentManager
     lateinit var layoutInventorizationListItemBinding: LayoutInventorizationListItemBinding
@@ -68,13 +69,15 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
         when (holder) {
             is InventorizationViewHolder -> {
                 holder.bind(inventorizationsViewModels[position])
+                val fragment = ProductsRecyclerViewFragment(supportFragmentManager, curInventorization.stockTaking.store.products, curInventorization, true)
+                inventIdToViewFragment[curInventorization.stockTaking.stockTakingID] = fragment
 
                 holder.itemView.setOnClickListener {
                     Log.d(TAG, "inventorization was clicked")
                     var superIntent = Intent(mContext, ProductsRecyclerViewFragment::class.java)
 
                     val tr = supportFragmentManager.beginTransaction()
-                    tr.replace(R.id.inventorizationRelativeLayout, ProductsRecyclerViewFragment(supportFragmentManager, curInventorization.stockTaking.store.products, curInventorization, true))
+                    tr.replace(R.id.inventorizationRelativeLayout, fragment)
                     tr.addToBackStack("products")
                     tr.commit()
                 }
@@ -109,6 +112,17 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
         inventorizations.add(stockTaking)
         keys.add(key)
         inventorizationsViewModels.add(StockTakingViewModel(stockTaking, key))
+        notifyDataSetChanged()
+    }
+
+    fun addInventorizedProducts(stockTaking: StockTaking, key: String) {
+        val index = inventorizations.indexOfFirst { it.stockTakingID == stockTaking.stockTakingID }
+//        inventorizationsViewModels[index].stockTaking.inventorizedBarCodes = stockTaking.inventorizedBarCodes
+        stockTaking.inventorizedBarCodes.forEach {
+            Log.d(TAG, "new inventorized product id is $it")
+            inventIdToViewFragment[stockTaking.stockTakingID]?.productAdapter?.markProductAsInventorized(it)
+        }
+//        inventIdToViewFragment[stockTaking.stockTakingID]!!.productAdapter.notifyDataSetChanged()
         notifyDataSetChanged()
     }
 

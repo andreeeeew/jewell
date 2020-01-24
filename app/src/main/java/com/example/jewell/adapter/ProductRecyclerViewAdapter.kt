@@ -124,6 +124,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     fun markProductAsInventorized(barcode: String) {
         if (inventorizedBarCodes.contains(barcode))
             return
+        Log.d(TAG, "inventorizedBarCodes ${inventorizedBarCodes.toString()}, new bar code is $barcode")
         inventorizedBarCodes.add(barcode)
         barcodeToViewHolder[barcode]?.binding?.productConstraintLayout?.setBackgroundColor(Color.GREEN)
     }
