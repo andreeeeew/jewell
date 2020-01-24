@@ -117,7 +117,7 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
 
     fun addInventorizedProducts(stockTaking: StockTaking, key: String) {
         val index = inventorizations.indexOfFirst { it.stockTakingID == stockTaking.stockTakingID }
-//        inventorizationsViewModels[index].stockTaking.inventorizedBarCodes = stockTaking.inventorizedBarCodes
+        inventorizationsViewModels[index].stockTaking.inventorizedBarCodes = stockTaking.inventorizedBarCodes
         stockTaking.inventorizedBarCodes.forEach {
             Log.d(TAG, "new inventorized product id is $it")
             inventIdToViewFragment[stockTaking.stockTakingID]?.productAdapter?.markProductAsInventorized(it)
