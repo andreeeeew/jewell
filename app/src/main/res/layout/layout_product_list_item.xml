@@ -11,8 +11,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardElevation="10dp"
-        app:cardCornerRadius="2dp"
+        app:cardElevation="20dp"
+        app:cardCornerRadius="4dp"
         app:cardPreventCornerOverlap="false"
         >
 
@@ -33,7 +33,7 @@
                     android:layout_width="96dp"
                     android:layout_height="96dp"
                     app:civ_border_color="@color/blue_inactive"
-                    app:civ_border_width="1dp"
+                    app:civ_border_width="2dp"
                     app:product_image_url="@{product.image}" />
 
                 <TextView

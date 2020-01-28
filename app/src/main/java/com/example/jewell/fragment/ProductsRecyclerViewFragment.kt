@@ -1,5 +1,6 @@
 package com.example.jewell.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -95,7 +96,6 @@ class ProductsRecyclerViewFragment(
          }
         mProductsDatabaseReference.addChildEventListener(mChildEventListener)
 
-
         recyclerView.layoutManager = LinearLayoutManager(context!!)
         recyclerView.adapter = productAdapter
         recyclerView.addItemDecoration(topSpacingItemDecoration)
@@ -122,30 +122,33 @@ class ProductsRecyclerViewFragment(
         })
         fab.setOnClickListener {
             val barcode = Random.nextInt(1, 9).toString()
-            Log.d("DSA", "FAB was clicked, barcode is $barcode")
+            Log.d(TAG, "FAB was clicked, barcode is $barcode")
             productAdapter!!.markProductAsInventorized(barcode)
-
+            if (!stockTakingViewModel.stockTaking.inventorizedBarCodes.contains(barcode)){
+                stockTakingViewModel.stockTaking.inventorizedBarCodes.add(barcode)
+            }
+            Log.d(TAG, "stocktaking view model key is ${stockTakingViewModel.key}")
+            Log.d(TAG, "new stocktaking barcodes are ${stockTakingViewModel.stockTaking.inventorizedBarCodes.toString()}")
             InventorizationRecyclerViewFragment
                 .mInventorizationsDatabaseReference
                 .child(stockTakingViewModel.key).setValue(stockTakingViewModel.stockTaking)
 
 //            startActivityForResult(intent, 0)
             //TODO(andreew) pass barCodeToProduct to this activity
-            startActivityForResult(intent, 1337)
+//            startActivityForResult(intent, 1337)
         }
     }
 
     // TODO (andreew) rather don't need it. Need to pass hashmap to barcode scanner and play with it there
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        Log.d("SDA", "requestcode is $requestCode resultcode is $resultCode")
-//        super.onActivityResult(requestCode, resultCode, data)
-//        if (requestCode === 1337) {
-//            Log.d("SDA", "resultcode is 0")
-//            if (resultCode === Activity.RESULT_OK) { // contents contains whatever was encoded
-//                val contents: String = data!!.getStringExtra("barcode")
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode === 1337) {
+            if (resultCode === Activity.RESULT_OK) { // contents contains whatever was encoded
+                val barcode: String = data!!.getStringExtra("barcode")
+                Log.d("DSA", "barcode is $barcode")
 //                productAdapter.markProductAsInventorized("123")
-//                Log.d("DSA", "contents is $contents")
-//            }
-//        }
-//    }
+
+            }
+        }
+    }
 }

@@ -44,7 +44,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     private var products: MutableList<Product> = ArrayList()
     private var productsViewModels: MutableList<ProductViewModel> = ArrayList()
     private var keys: MutableList<String> = ArrayList()
-    private lateinit var inventorizedBarCodes: MutableList<String>
+    private var inventorizedBarCodes: MutableList<String>
     private val TAG = "RecyclerViewAdapter"
     lateinit var layoutProductListItemBinding: LayoutProductListItemBinding
     private val barcodeToViewHolder: HashMap<String, ProductViewHolder> = HashMap()
@@ -126,6 +126,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
             return
         Log.d(TAG, "inventorizedBarCodes ${inventorizedBarCodes.toString()}, new bar code is $barcode")
         inventorizedBarCodes.add(barcode)
+        Log.d(TAG, "new barcodes are ${inventorizedBarCodes.toString()}")
         barcodeToViewHolder[barcode]?.binding?.productConstraintLayout?.setBackgroundColor(Color.GREEN)
     }
 

@@ -10,7 +10,7 @@
         android:id="@+id/ll"
         android:orientation="vertical" android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/invent_fab"
+        android:background="@color/colorPrimary"
         android:weightSum="100">
 
 
@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:id="@+id/fv_image"
-            android:layout_weight="80"
+            android:layout_weight="90"
             android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher"
             android:onClick="@{() -> product.showType()}"
@@ -36,7 +36,7 @@
                 android:textSize="20dp"
                 android:layout_marginLeft="@dimen/product_label_align_left"
                 android:textColor="@color/product_label"
-                android:layout_weight="9"
+                android:layout_weight="7"
                 android:gravity="center"
                 />
 
@@ -49,7 +49,7 @@
                 android:layout_marginRight="@dimen/product_align_right"
                 android:layout_alignParentRight="true"
                 android:textColor="@color/product_label"
-                android:layout_weight="9"
+                android:layout_weight="7"
                 android:gravity="center"
                 />
         </RelativeLayout>
@@ -66,7 +66,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="@dimen/product_label_align_left"
             android:textColor="@color/product_label"
-            android:layout_weight="9"
+            android:layout_weight="7"
             android:gravity="center"
             />
 
@@ -95,7 +95,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="@dimen/product_label_align_left"
             android:textColor="@color/product_label"
-            android:layout_weight="9"
+            android:layout_weight="7"
             android:gravity="center"
             />
 
@@ -107,7 +107,7 @@
                 android:textSize="20dp"
                 android:layout_marginRight="@dimen/product_align_right"
                 android:textColor="@color/product_label"
-                android:layout_weight="9"
+                android:layout_weight="7"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
                 />
@@ -125,7 +125,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="@dimen/product_label_align_left"
             android:textColor="@color/product_label"
-            android:layout_weight="9"
+            android:layout_weight="7"
             android:gravity="center"
             />
 
@@ -137,7 +137,7 @@
                 android:textSize="20dp"
                 android:layout_marginRight="@dimen/product_align_right"
                 android:textColor="@color/product_label"
-                android:layout_weight="9"
+                android:layout_weight="7"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
                 />
@@ -155,7 +155,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="@dimen/product_label_align_left"
             android:textColor="@color/product_label"
-            android:layout_weight="9"
+            android:layout_weight="7"
             android:gravity="center" />
 
             <EditText
@@ -166,7 +166,7 @@
                 android:textSize="20dp"
                 android:layout_marginRight="@dimen/product_align_right"
                 android:textColor="@color/product_label"
-                android:layout_weight="9"
+                android:layout_weight="7"
                 android:layout_alignParentRight="true"
                 android:gravity="center" />
         </RelativeLayout>
@@ -183,7 +183,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="@dimen/product_label_align_left"
             android:textColor="@color/product_label"
-            android:layout_weight="9"
+            android:layout_weight="7"
             android:gravity="center"
             />
 
@@ -195,7 +195,7 @@
             android:textSize="20dp"
             android:layout_marginRight="@dimen/product_align_right"
             android:textColor="@color/green_active"
-            android:layout_weight="9"
+            android:layout_weight="7"
             android:layout_alignParentRight="true"
             android:gravity="center"
             />
@@ -213,7 +213,7 @@
                 android:textSize="20dp"
                 android:layout_marginLeft="@dimen/product_label_align_left"
                 android:textColor="@color/product_label"
-                android:layout_weight="9"
+                android:layout_weight="7"
                 android:gravity="center"
                 />
 
@@ -225,7 +225,7 @@
                 android:textSize="20dp"
                 android:layout_marginRight="@dimen/product_align_right"
                 android:textColor="@color/green_active"
-                android:layout_weight="9"
+                android:layout_weight="7"
                 android:layout_alignParentRight="true"
                 android:gravity="center"
                 />
@@ -243,7 +243,7 @@
             android:textSize="20dp"
             android:layout_marginLeft="@dimen/product_label_align_left"
             android:textColor="@color/product_label"
-            android:layout_weight="9"
+            android:layout_weight="7"
             android:gravity="center" />
 
         <TextView
@@ -254,7 +254,7 @@
             android:textSize="20dp"
             android:layout_marginRight="@dimen/product_align_right"
             android:textColor="@color/blue_active"
-            android:layout_weight="9"
+            android:layout_weight="7"
             android:layout_alignParentRight="true"
             android:gravity="center" />
         </RelativeLayout>
