@@ -121,21 +121,12 @@ class ProductsRecyclerViewFragment(
             }
         })
         fab.setOnClickListener {
-            val barcode = Random.nextInt(1, 9).toString()
-            Log.d(TAG, "FAB was clicked, barcode is $barcode")
-            productAdapter!!.markProductAsInventorized(barcode)
-            if (!stockTakingViewModel.stockTaking.inventorizedBarCodes.contains(barcode)){
-                stockTakingViewModel.stockTaking.inventorizedBarCodes.add(barcode)
-            }
-            Log.d(TAG, "stocktaking view model key is ${stockTakingViewModel.key}")
-            Log.d(TAG, "new stocktaking barcodes are ${stockTakingViewModel.stockTaking.inventorizedBarCodes.toString()}")
-            InventorizationRecyclerViewFragment
-                .mInventorizationsDatabaseReference
-                .child(stockTakingViewModel.key).setValue(stockTakingViewModel.stockTaking)
+//            val barcode = Random.nextInt(1, 9).toString()
+
 
 //            startActivityForResult(intent, 0)
             //TODO(andreew) pass barCodeToProduct to this activity
-//            startActivityForResult(intent, 1337)
+            startActivityForResult(intent, 1337)
         }
     }
 
@@ -145,7 +136,16 @@ class ProductsRecyclerViewFragment(
         if (requestCode === 1337) {
             if (resultCode === Activity.RESULT_OK) { // contents contains whatever was encoded
                 val barcode: String = data!!.getStringExtra("barcode")
-                Log.d("DSA", "barcode is $barcode")
+                Log.d(TAG, "barcode is $barcode")
+                productAdapter!!.markProductAsInventorized(barcode)
+                if (!stockTakingViewModel.stockTaking.inventorizedBarCodes.contains(barcode)){
+                    stockTakingViewModel.stockTaking.inventorizedBarCodes.add(barcode)
+                }
+                Log.d(TAG, "stocktaking view model key is ${stockTakingViewModel.key}")
+                Log.d(TAG, "new stocktaking barcodes are ${stockTakingViewModel.stockTaking.inventorizedBarCodes.toString()}")
+                InventorizationRecyclerViewFragment
+                    .mInventorizationsDatabaseReference
+                    .child(stockTakingViewModel.key).setValue(stockTakingViewModel.stockTaking)
 //                productAdapter.markProductAsInventorized("123")
 
             }
