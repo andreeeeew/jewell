@@ -41,6 +41,11 @@ class ProductViewModel(var product: Product, var key: String): BaseObservable() 
     }
 
     @Bindable
+    fun getBarcode(): String {
+        return product.barCode
+    }
+
+    @Bindable
     fun setImage(image: String) {
 
     }

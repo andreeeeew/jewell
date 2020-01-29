@@ -82,6 +82,36 @@
             android:gravity="center"/>
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/product_label_vertical_disctance">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/barcode_label"
+                android:text="Barcode"
+                android:textSize="20dp"
+                android:layout_marginLeft="@dimen/product_label_align_left"
+                android:textColor="@color/product_label"
+                android:layout_weight="7"
+                android:gravity="center"
+                />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/fv_barcode"
+                android:text="@{product.barcode}"
+                android:textSize="20dp"
+                android:layout_marginRight="@dimen/product_align_right"
+                android:textColor="@color/product_label"
+                android:layout_weight="7"
+                android:layout_alignParentRight="true"
+                android:gravity="center"
+                />
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_width="match_parent"

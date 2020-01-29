@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         mAuthStateListener = FirebaseAuth.AuthStateListener{
             val user = it.currentUser
             if (user != null) {
-                Toast.makeText(this, "You're now signed in. Welcome to FriendlyChat.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "You're now signed in. Welcome to Simple Inventorization App.", Toast.LENGTH_SHORT).show();
             } else{
                 val providers = arrayListOf(
                     AuthUI.IdpConfig.EmailBuilder().build(),
