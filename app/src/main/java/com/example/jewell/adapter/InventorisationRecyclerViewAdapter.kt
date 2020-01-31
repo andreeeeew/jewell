@@ -112,6 +112,7 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
         inventorizations.add(stockTaking)
         keys.add(key)
         inventorizationsViewModels.add(StockTakingViewModel(stockTaking, key))
+        Log.d(TAG, "Before notifyDataSetChanged()")
         notifyDataSetChanged()
     }
 
@@ -120,10 +121,21 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
         inventorizationsViewModels[index].stockTaking.inventorizedBarCodes = stockTaking.inventorizedBarCodes
         stockTaking.inventorizedBarCodes.forEach {
             Log.d(TAG, "new inventorized product id is $it")
-            inventIdToViewFragment[stockTaking.stockTakingID]?.productAdapter?.markProductAsInventorized(it)
+            val vf = inventIdToViewFragment[stockTaking.stockTakingID]
+            vf?.productAdapter?.markProductAsInventorized(it)
+            Log.d(TAG, "products size is ${vf?.products?.size}, inventorized barcode size is ${vf?.productAdapter?.inventorizedBarCodes?.size}")
+            if (vf?.products?.size == vf?.productAdapter?.inventorizedBarCodes?.size) {
+                Log.d(TAG, "inventorization finished")
+//                Handler().postDelayed({
+//                    val toast = Toast.makeText(mContext,"Inventorization finished successfully", Toast.LENGTH_SHORT)
+//                    toast.setGravity(Gravity.CENTER, 0, 0)
+//                    toast.show()
+//                }, 5000)
+            }
         }
 //        inventIdToViewFragment[stockTaking.stockTakingID]!!.productAdapter.notifyDataSetChanged()
-        notifyDataSetChanged()
+//        Log.d(TAG, "Before notifyDataSetChanged()")
+//        notifyDataSetChanged()
     }
 
     class InventorizationViewHolder constructor(

@@ -20,7 +20,6 @@ import com.example.jewell.view_decorator.TopSpacingItemDecoration
 import com.example.jewell.viewmodels.StockTakingViewModel
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.products_fragment.view.*
-import kotlin.random.Random
 
 class ProductsRecyclerViewFragment(
     val supportFragmentManager: FragmentManager,
@@ -29,7 +28,7 @@ class ProductsRecyclerViewFragment(
     val makeVisible: Boolean
 ) : Fragment() {
     private lateinit var inflatedView: View
-    var productAdapter: ProductRecyclerViewAdapter? = null
+    lateinit var productAdapter: ProductRecyclerViewAdapter
     private lateinit var intent: Intent
     private val TAG = "ProductsRecyclerViewFragment"
     lateinit var barCodeToProduct: HashMap<String, Product>
@@ -121,11 +120,7 @@ class ProductsRecyclerViewFragment(
             }
         })
         fab.setOnClickListener {
-//            val barcode = Random.nextInt(1, 9).toString()
-
-
-//            startActivityForResult(intent, 0)
-            //TODO(andreew) pass barCodeToProduct to this activity
+            Log.d(TAG, "view is ${this.view}")
             startActivityForResult(intent, 1337)
         }
     }

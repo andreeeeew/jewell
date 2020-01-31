@@ -44,7 +44,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     private var products: MutableList<Product> = ArrayList()
     private var productsViewModels: MutableList<ProductViewModel> = ArrayList()
     private var keys: MutableList<String> = ArrayList()
-    private var inventorizedBarCodes: MutableList<String>
+    var inventorizedBarCodes: MutableList<String>
     private val TAG = "RecyclerViewAdapter"
     lateinit var layoutProductListItemBinding: LayoutProductListItemBinding
     private val barcodeToViewHolder: HashMap<String, ProductViewHolder> = HashMap()
@@ -104,6 +104,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         products.add(product)
         keys.add(key)
         productsViewModels.add(ProductViewModel(product, key))
+        Log.d(TAG, "Before notifyDataSetChanged()")
         notifyDataSetChanged()
     }
 
@@ -117,11 +118,12 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         products[index] = product
         productsViewModels[index].product = product
         Log.d(TAG, "new product is ${products[index]} and coresponding viewmodel product is ${productsViewModels[index].product}")
+        Log.d(TAG, "Before notifyDataSetChanged()")
         notifyDataSetChanged()
 //        notifyItemChanged(index)
     }
 
-    fun markProductAsInventorized(barcode: String) {
+    fun  markProductAsInventorized(barcode: String) {
         if (inventorizedBarCodes.contains(barcode))
             return
         Log.d(TAG, "inventorizedBarCodes ${inventorizedBarCodes.toString()}, new bar code is $barcode")

@@ -68,6 +68,7 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     fun addStore(store: Store) {
         stores.add(store)
+        Log.d(TAG, "Before notifyDataSetChanged()")
         notifyDataSetChanged()
     }
 

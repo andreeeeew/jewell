@@ -80,7 +80,7 @@ class InventorizationRecyclerViewFragment(val supportFragmentManager: FragmentMa
     override fun onResume() {
         super.onResume()
         Log.d(TAG, "We are resumed!!")
-        inventorisationAdapter.notifyDataSetChanged()
+//        inventorisationAdapter.notifyDataSetChanged()
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
