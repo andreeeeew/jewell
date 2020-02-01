@@ -53,5 +53,6 @@
     <color name="product_inventorized">#00FF8E</color>
 
     <color name="invent_background">#33cccc</color>
+    <drawable name="finished_invent">#33cc00</drawable>
 
 </resources>

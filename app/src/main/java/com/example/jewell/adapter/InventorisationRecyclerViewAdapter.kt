@@ -3,9 +3,11 @@ package com.example.jewell.adapter
 import android.content.Context
 import android.content.Intent
 import android.util.Log
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
@@ -126,16 +128,14 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
             Log.d(TAG, "products size is ${vf?.products?.size}, inventorized barcode size is ${vf?.productAdapter?.inventorizedBarCodes?.size}")
             if (vf?.products?.size == vf?.productAdapter?.inventorizedBarCodes?.size) {
                 Log.d(TAG, "inventorization finished")
-//                Handler().postDelayed({
-//                    val toast = Toast.makeText(mContext,"Inventorization finished successfully", Toast.LENGTH_SHORT)
-//                    toast.setGravity(Gravity.CENTER, 0, 0)
-//                    toast.show()
-//                }, 5000)
+                val toast = Toast.makeText(vf?.context,"Inventorization finished successfully", Toast.LENGTH_SHORT)
+                toast.setGravity(Gravity.CENTER, 0, 0)
+                toast.show()
+                notifyDataSetChanged()
             }
         }
 //        inventIdToViewFragment[stockTaking.stockTakingID]!!.productAdapter.notifyDataSetChanged()
 //        Log.d(TAG, "Before notifyDataSetChanged()")
-//        notifyDataSetChanged()
     }
 
     class InventorizationViewHolder constructor(

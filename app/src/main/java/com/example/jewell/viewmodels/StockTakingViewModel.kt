@@ -22,4 +22,9 @@ class StockTakingViewModel (var stockTaking: StockTaking, var key: String): Base
     fun getImage(): String {
         return "https://abas-erp.com/sites/default/files/styles/content-image-third/public/Stocktaking%20erp%20.png?itok=BBOB_YxO"
     }
+
+
+    fun finished(): Boolean {
+        return stockTaking.inventorizedBarCodes.size == stockTaking.store.products.size
+    }
 }
