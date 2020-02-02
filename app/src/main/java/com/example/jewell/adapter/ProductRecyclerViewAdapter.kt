@@ -1,11 +1,11 @@
 package com.example.jewell.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
@@ -76,7 +76,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         holder.bind(productsViewModels[position])
         barcodeToViewHolder[product.barCode] = holder
         if (inventorizedBarCodes.contains(product.barCode)) {
-            holder.binding.productConstraintLayout.setBackgroundColor(Color.GREEN)
+            holder.binding.productConstraintLayout.background = ContextCompat.getDrawable(mContext, R.drawable.custom_done)
         }
 
         backStackListener(holder, products[position])
@@ -129,7 +129,7 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         Log.d(TAG, "inventorizedBarCodes ${inventorizedBarCodes.toString()}, new bar code is $barcode")
         inventorizedBarCodes.add(barcode)
         Log.d(TAG, "new barcodes are ${inventorizedBarCodes.toString()}")
-        barcodeToViewHolder[barcode]?.binding?.productConstraintLayout?.setBackgroundColor(Color.GREEN)
+        barcodeToViewHolder[barcode]?.binding?.productConstraintLayout?.background = ContextCompat.getDrawable(mContext, R.drawable.custom_done)
     }
 
 

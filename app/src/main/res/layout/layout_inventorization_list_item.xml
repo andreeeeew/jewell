@@ -42,7 +42,7 @@
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="70dp"
                     android:layout_toEndOf="@id/inventorization_image"
-                    android:text="@string/shop_name_1"
+                    android:text="@{inventorization.stockTaking.store.name}"
                     android:textColor="@color/purple_active"
                     android:textSize="19sp" />
 
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/inventorization_started"
-                    android:text="19.11.2019"
+                    android:text="@{inventorization.stockTaking.startDate}"
                     android:layout_below="@+id/all_products_in_store"
                     android:layout_marginTop="13dp"
                     android:layout_alignParentEnd="true"
