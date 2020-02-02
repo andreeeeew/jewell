@@ -61,24 +61,7 @@ class ProductFullViewActivity: AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-    // TODO(andreew) finish binding
     fun bind(product: ProductViewModel) {
-//        var arrivalDate = findViewById<TextView>(R.id.fv_arrival_date)
-//        arrivalDate.text = product.arrivalDate.toString()
-//
-//        var type = findViewById<TextView>(R.id.fv_type)
-//        type.text = product.type.value
-//
-//        var millesial = findViewById<TextView>(R.id.fv_millesimal)
-//        millesial.text = product.millesimal.toString()
-//
-//        var size = findViewById<TextView>(R.id.fv_size)
-//        size.text = product.size.toString()
-//
-//        var shop = findViewById<TextView>(R.id.fv_shop)
-//        Log.d("FDS", "product shop is ${product.shop}")
-//        shop.text = product.shop
-
         var image = findViewById<ImageView>(R.id.fv_image)
 
         val requestOptions = RequestOptions()

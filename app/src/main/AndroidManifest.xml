@@ -24,6 +24,7 @@
         </activity>
         <activity android:name=".BottomBarActivity" />
         <activity android:name=".ProductFullViewActivity" />
+        <activity android:name=".PreviewActivity"/>
         <activity
             android:name=".activity.BarCodeScannerActivity"
             android:screenOrientation="fullSensor"

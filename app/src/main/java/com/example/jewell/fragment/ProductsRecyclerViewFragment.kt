@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.LifecycleOwner
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.jewell.PreviewActivity
 import com.example.jewell.R
 import com.example.jewell.activity.BarCodeScannerActivity
 import com.example.jewell.adapter.ProductRecyclerViewAdapter
@@ -134,12 +135,18 @@ class ProductsRecyclerViewFragment(
                 Log.d(TAG, "barcode is $barcode")
                 if (products.indexOfFirst{ it.barCode.equals(barcode) } != -1) {
                     Log.d(TAG, "barcode exists")
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.productsRelativeLayout, PreviewFragment(products.first { it.barCode.equals(barcode) }))
-                        .addToBackStack(FullViewFragment.BackStackName)
-                        .commit()
+                    var intent = Intent(context, PreviewActivity::class.java)
+                    intent.putExtra("product", products.first { it.barCode.equals(barcode) })
+                    startActivityForResult(intent, 1488)
                 }
-
+            }
+        } else if (requestCode == 1488) {
+            if (resultCode == Activity.RESULT_OK) {
+                val barcode: String = data!!.getStringExtra("barcode")
+                val success: Boolean = data!!.getBooleanExtra("success", false)
+                Log.d(TAG, "success is $success, barcode is $barcode")
+                if (!success)
+                    return
 
                 productAdapter!!.markProductAsInventorized(barcode)
                 if (!stockTakingViewModel.stockTaking.inventorizedBarCodes.contains(barcode)){
@@ -151,7 +158,6 @@ class ProductsRecyclerViewFragment(
                     .mInventorizationsDatabaseReference
                     .child(stockTakingViewModel.key).setValue(stockTakingViewModel.stockTaking)
 //                productAdapter.markProductAsInventorized("123")
-
             }
         }
     }
