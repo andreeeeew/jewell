@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="product"
+            type="com.example.jewell.models.Product" />
+    </data>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/preview_background">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/product_image"
+            android:layout_width="250dp"
+            android:layout_height="230dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            >
+            <TextView
+                android:id="@+id/product_name_center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@{product.name}"
+                android:textSize="35sp"
+                android:layout_marginStart="140dp"
+                />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            >
+        <TextView
+            android:id="@+id/barcode_label_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="start|bottom"
+            android:text="Barcode"
+            android:textColor="@color/white"
+            android:textSize="27sp"
+            android:layout_marginStart="80dp"
+            />
+
+            <TextView
+                android:id="@+id/barcode_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="end|bottom"
+                android:layout_toEndOf="@+id/barcode_label_1"
+                android:layout_marginStart="80dp"
+                android:layout_marginEnd="30dp"
+                android:text="@{product.barCode}"
+                android:textSize="27sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:id="@+id/type_label_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="start|bottom"
+                android:text="Type"
+                android:textColor="@color/white"
+                android:textSize="27sp"
+                android:layout_marginStart="80dp"
+                />
+
+            <TextView
+                android:id="@+id/type_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="end|bottom"
+                android:layout_toEndOf="@+id/type_label_1"
+                android:layout_marginStart="120dp"
+                android:layout_marginEnd="30dp"
+                android:text="@{product.type}"
+                android:textSize="27sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            >
+            <TextView
+                android:id="@+id/price_label_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="start|bottom"
+                android:text="Price"
+                android:textColor="@color/white"
+                android:textSize="27sp"
+                android:layout_marginStart="80dp"
+                />
+
+            <TextView
+                android:id="@+id/price_value"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="end|bottom"
+                android:layout_toEndOf="@+id/price_label_1"
+                android:layout_marginStart="120dp"
+                android:layout_marginEnd="30dp"
+                android:textColor="@color/dark_green"
+                android:text="@{product.price}"
+                android:textSize="27sp" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            >
+            <Button
+                android:id="@+id/add_preview_button"
+                android:layout_width="170dp"
+                android:layout_height="37dp"
+                android:textAlignment="center"
+                android:gravity="start|bottom"
+                android:text="Inventorize"
+                android:textSize="24sp"
+                android:layout_marginStart="31dp"
+                android:textAllCaps="false"
+                android:background="@drawable/custom_accept_button"
+                android:textColor="#FFFF"
+                />
+            <Button
+                android:id="@+id/cancel_preview_button"
+                android:layout_width="140dp"
+                android:layout_height="37dp"
+                android:gravity="end"
+                android:text="Cancel"
+                android:textAlignment="center"
+                android:textSize="24sp"
+                android:layout_toEndOf="@+id/add_preview_button"
+                android:layout_marginStart="45dp"
+                android:textAllCaps="false"
+                android:background="@drawable/custom_cancel_button"
+                android:textColor="#FFFF"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</layout>

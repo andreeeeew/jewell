@@ -55,4 +55,6 @@
     <color name="invent_background">#33cccc</color>
     <drawable name="finished_invent">#33cc00</drawable>
 
+    <color name="dark_green">#05661e</color>
+
 </resources>

@@ -132,6 +132,15 @@ class ProductsRecyclerViewFragment(
             if (resultCode === Activity.RESULT_OK) { // contents contains whatever was encoded
                 val barcode: String = data!!.getStringExtra("barcode")
                 Log.d(TAG, "barcode is $barcode")
+                if (products.indexOfFirst{ it.barCode.equals(barcode) } != -1) {
+                    Log.d(TAG, "barcode exists")
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.productsRelativeLayout, PreviewFragment(products.first { it.barCode.equals(barcode) }))
+                        .addToBackStack(FullViewFragment.BackStackName)
+                        .commit()
+                }
+
+
                 productAdapter!!.markProductAsInventorized(barcode)
                 if (!stockTakingViewModel.stockTaking.inventorizedBarCodes.contains(barcode)){
                     stockTakingViewModel.stockTaking.inventorizedBarCodes.add(barcode)
