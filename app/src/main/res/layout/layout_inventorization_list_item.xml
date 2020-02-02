@@ -17,7 +17,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@{inventorization.finished() ? @drawable/finished_invent : null }"
+            android:background="@{inventorization.finished() ? @drawable/finished_invent : @drawable/custom_invent_background }"
             >
 
             <RelativeLayout
@@ -92,8 +92,9 @@
                     android:layout_below="@+id/all_products_in_store"
                     android:layout_marginTop="13dp"
                     android:layout_alignParentEnd="true"
+                    android:textSize="15sp"
                     android:layout_marginStart="12dp"
-                    android:textColor="@color/store_inentorization_label"
+                    android:textColor="@color/inventorization_started"
                     />
             </RelativeLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -45,7 +45,7 @@
     <color name="product_label">#282828</color>
 
     <color name="store_products_label">#0000ff</color>
-    <color name="store_inentorization_label">#0099e6</color>
+    <color name="store_inentorization_label">#80ffff</color>
     <color name="invent_fab">#5900b3</color>
 
     <color name="product_price">#009933</color>
@@ -56,5 +56,6 @@
     <drawable name="finished_invent">#33cc00</drawable>
 
     <color name="dark_green">#05661e</color>
+    <color name="inventorization_started">#e60073</color>
 
 </resources>

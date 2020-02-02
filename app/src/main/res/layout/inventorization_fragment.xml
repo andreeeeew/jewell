@@ -11,5 +11,7 @@
         tools:listitem="@layout/layout_inventorization_list_item"
         android:id="@+id/recyclerViewInventorizations"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@drawable/custom_invents_background"
+        />
 </RelativeLayout>
