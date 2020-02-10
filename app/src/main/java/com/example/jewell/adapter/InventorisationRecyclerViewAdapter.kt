@@ -104,10 +104,6 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
             }
         })
 
-//        fab.setOnClickListener {
-//            Log.d("DSA", "FAB was clicked")
-//            startActivityForResult(intent, 0)
-//        }
     }
 
     fun addInventorization(stockTaking: StockTaking, key: String) {
@@ -134,8 +130,6 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
                 notifyDataSetChanged()
             }
         }
-//        inventIdToViewFragment[stockTaking.stockTakingID]!!.productAdapter.notifyDataSetChanged()
-//        Log.d(TAG, "Before notifyDataSetChanged()")
     }
 
     class InventorizationViewHolder constructor(
@@ -150,24 +144,11 @@ open class InventorisationRecyclerViewAdapter: RecyclerView.Adapter<RecyclerView
 
         val inventorizationImage = itemView.inventorization_image
         val inventorizationStoreName = itemView.inventorization_store_name
-//        val inventorizationLastInvent = itemView.inventorization_last_inventorization
 
         fun bind(inventorization: StockTakingViewModel) {
             binding.inventorization = inventorization
             binding.executePendingBindings()
 
-//            inventorizationStoreName.text = inventorization.store.name
-////            inventorizationProducts.text = inventorization.products.size.toString()
-////            inventorizationLastInvent.text = inventorization.lastInvent.toString()
-//
-//            val requestOptions = RequestOptions()
-//                .placeholder(R.drawable.ic_launcher_background)
-//                .error(R.drawable.ic_launcher_background)
-//
-//            Glide.with(itemView.context)
-//                .applyDefaultRequestOptions(requestOptions)
-//                .load(inventorization.store.image)
-//                .into(inventorizationImage)
         }
     }
 }

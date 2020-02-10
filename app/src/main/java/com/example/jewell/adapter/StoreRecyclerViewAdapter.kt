@@ -58,9 +58,6 @@ class StoreRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     tr.addToBackStack("products")
                     tr.commit()
 
-//                    var intent = Intent(mContext, ProductFullViewActivity::class.java)
-//                    intent.putExtra("store", stores[position])
-//                    mContext.startActivity(superIntent)
                 }
             }
         }

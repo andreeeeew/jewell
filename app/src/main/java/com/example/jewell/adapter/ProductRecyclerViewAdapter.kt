@@ -100,7 +100,6 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
     }
 
     fun addProduct(product: Product, key: String) {
-        //TODO(andreew) add to inventorized if it works
         products.add(product)
         keys.add(key)
         productsViewModels.add(ProductViewModel(product, key))
@@ -120,7 +119,6 @@ class ProductRecyclerViewAdapter : RecyclerView.Adapter<ProductRecyclerViewAdapt
         Log.d(TAG, "new product is ${products[index]} and coresponding viewmodel product is ${productsViewModels[index].product}")
         Log.d(TAG, "Before notifyDataSetChanged()")
         notifyDataSetChanged()
-//        notifyItemChanged(index)
     }
 
     fun  markProductAsInventorized(barcode: String) {

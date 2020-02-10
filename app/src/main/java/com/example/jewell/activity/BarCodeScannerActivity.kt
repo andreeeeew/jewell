@@ -18,10 +18,6 @@ class BarCodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         super.onCreate(savedInstanceState)
         mScannerView = ZXingScannerView(this)
         setContentView(mScannerView)
-//        var intent = Intent()
-//        intent.putExtra("barcode", "1488")
-//        setResult(RESULT_OK, intent)
-//        finish()
     }
 
     override fun onResume() {
@@ -39,9 +35,8 @@ class BarCodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
 
 
     override fun handleResult(rawResult: Result?) {
-        // Do something with the result here
-        Log.v(TAG, rawResult!!.getText()); // Prints scan results
-        Log.v(TAG, rawResult!!.getBarcodeFormat().toString()); // Prints the scan format (qrcode, pdf417 etc.)
+        Log.v(TAG, rawResult!!.getText())
+        Log.v(TAG, rawResult!!.getBarcodeFormat().toString())
         val snackbar = Snackbar
             .make(mScannerView!!.rootView, "Bar Code is ${rawResult!!.text}", Snackbar.LENGTH_LONG)
         snackbar.show()
@@ -49,8 +44,6 @@ class BarCodeScannerActivity : Activity(), ZXingScannerView.ResultHandler {
         returnIntent.putExtra("barcode", rawResult.text.toString())
         setResult(RESULT_OK, returnIntent)
         finish()
-
-        // If you would like to resume scanning, call this method below:
-        mScannerView?.resumeCameraPreview(this);
+        mScannerView?.resumeCameraPreview(this)
     }
 }

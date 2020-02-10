@@ -9,7 +9,6 @@ class StockTakingViewModel (var stockTaking: StockTaking, var key: String): Base
 
     @Bindable
     fun getNumberOfInventorizedProducts(): String {
-        // TODO(andreew) make sure there are no duplicates
         return stockTaking.inventorizedBarCodes.count().toString()
     }
 

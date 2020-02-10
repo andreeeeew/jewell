@@ -71,7 +71,6 @@ class ProductsRecyclerViewFragment(
         mFirebaseDatabase = FirebaseDatabase.getInstance()
         mProductsDatabaseReference = mFirebaseDatabase.reference.child("products")
 
-//        mProductsDatabaseReference.push().setValue(DataSource.createProductsDataSet()[0])
         mChildEventListener = object: ChildEventListener {
             override fun onCancelled(p0: DatabaseError) {
             }
@@ -80,14 +79,11 @@ class ProductsRecyclerViewFragment(
             }
 
             override fun onChildChanged(p0: DataSnapshot, p1: String?) {
-                Log.d(TAG, "child changed -> ${p0.getValue(Product::class.java)}")
                 productAdapter!!.modifyProduct(p0.getValue(Product::class.java)!!)
             }
 
             override fun onChildAdded(p0: DataSnapshot, p1: String?) {
-                Log.d(TAG, "key is ${p0.key}")
                 var newProduct = p0.getValue(Product::class.java)
-                Log.d(TAG, "new product is $newProduct")
                 productAdapter!!.addProduct(newProduct!!, p0.key!!)
             }
 
@@ -100,10 +96,8 @@ class ProductsRecyclerViewFragment(
         recyclerView.adapter = productAdapter
         recyclerView.addItemDecoration(topSpacingItemDecoration)
         if (makeVisible) {
-            Log.d("ALO", "Is visible")
             addOnScrollListener(view)
         }
-//        productAdapter.submitProducts(products, inventorizedBarCodes)
     }
 
     private fun addOnScrollListener(view: View) {
@@ -126,7 +120,6 @@ class ProductsRecyclerViewFragment(
         }
     }
 
-    // TODO (andreew) rather don't need it. Need to pass hashmap to barcode scanner and play with it there
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode === 1337) {
@@ -157,7 +150,6 @@ class ProductsRecyclerViewFragment(
                 InventorizationRecyclerViewFragment
                     .mInventorizationsDatabaseReference
                     .child(stockTakingViewModel.key).setValue(stockTakingViewModel.stockTaking)
-//                productAdapter.markProductAsInventorized("123")
             }
         }
     }

@@ -6,10 +6,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.jewell.fragment.ScreenSlidePageFragment
 
-/**
- * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
- * sequence.
- */
 class ScreenSlidePagerAdapter(
     private val fragmentList: ArrayList<Fragment>,
     fm: FragmentManager,

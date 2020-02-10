@@ -30,9 +30,7 @@ class FullViewFragment(val product: ProductViewModel): Fragment() {
                 .apply {
                 }
         getIncomingIntent(binding)
-//        product.type.observe(this, Observer {
-//            Toast.makeText(context, it, Toast.LENGTH_SHORT).show()
-//        })
+
 
         return binding.root
     }

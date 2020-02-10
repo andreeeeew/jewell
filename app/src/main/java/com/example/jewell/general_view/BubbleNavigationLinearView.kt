@@ -23,11 +23,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
     private var bubbleNavItems: ArrayList<BubbleToggleView>? = null
     private var navigationChangeListener: BubbleNavigationChangeListener? = null
 
-    /**
-     * Gets the current active position
-     *
-     * @return active item position
-     */
     private var currentActiveItemPosition = 0
     private var loadPreviousState: Boolean = false
 
@@ -35,9 +30,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
 
     private var pendingBadgeUpdate: SparseArray<String>? = null
 
-    /**
-     * Constructors
-     */
     constructor(@NonNull context: Context) : super(context) {
         init(context, null)
     }
@@ -73,16 +65,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
         super.onRestoreInstanceState(state)
     }
 
-    /////////////////////////////////////////
-    // PRIVATE METHODS
-    /////////////////////////////////////////
-
-    /**
-     * Initialize
-     *
-     * @param context current context
-     * @param attrs   custom attributes
-     */
     private fun init(context: Context, attrs: AttributeSet?) {
 
         orientation = LinearLayout.HORIZONTAL
@@ -91,9 +73,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
         post { updateChildNavItems() }
     }
 
-    /**
-     * Finds Child Elements of type [BubbleToggleView] and adds them to [.bubbleNavItems]
-     */
     private fun updateChildNavItems() {
         bubbleNavItems = ArrayList<BubbleToggleView>()
         for (index in 0 until childCount) {
@@ -101,7 +80,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
             if (view is BubbleToggleView)
                 bubbleNavItems!!.add(view as BubbleToggleView)
             else {
-                Log.w(TAG, "Cannot have child bubbleNavItems other than BubbleToggleView")
                 return
             }
         }
@@ -122,13 +100,11 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
         setInitialActiveState()
         updateMeasurementForItems()
 
-        //update the typeface
         val curTF = currentTypeface
         if (curTF != null) {
             setTypeface(curTF)
         }
 
-        //update the badge count
         if (pendingBadgeUpdate != null && bubbleNavItems != null) {
             for (i in 0 until pendingBadgeUpdate!!.size())
                 setBadgeValue(pendingBadgeUpdate!!.keyAt(i), pendingBadgeUpdate!!.valueAt(i))
@@ -136,9 +112,7 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
         }
     }
 
-    /**
-     * Makes sure that ONLY ONE child [.bubbleNavItems] is active
-     */
+
     private fun setInitialActiveState() {
 
         if (bubbleNavItems == null) return
@@ -165,9 +139,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
             bubbleNavItems!![currentActiveItemPosition].setInitialState(true)
     }
 
-    /**
-     * Update the measurements of the child components [.bubbleNavItems]
-     */
     private fun updateMeasurementForItems() {
         val numChildElements = bubbleNavItems!!.size
         if (numChildElements > 0) {
@@ -178,20 +149,13 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
         }
     }
 
-    /**
-     * Sets [android.view.View.OnClickListener] for the child views
-     */
+
     private fun setClickListenerForItems() {
         for (btv in bubbleNavItems!!)
             btv.setOnClickListener(this)
     }
 
-    /**
-     * Gets the Position of the Child from [.bubbleNavItems] from its id
-     *
-     * @param id of view to be searched
-     * @return position of the Item
-     */
+
     private fun getItemPositionById(id: Int): Int {
         for (i in bubbleNavItems!!.indices)
             if (id == bubbleNavItems!![i].getId())
@@ -199,24 +163,12 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
         return -1
     }
 
-    ///////////////////////////////////////////
-    // PUBLIC METHODS
-    ///////////////////////////////////////////
 
-    /**
-     * Set the navigation change listener [BubbleNavigationChangeListener]
-     *
-     * @param navigationChangeListener sets the passed parameters as listener
-     */
     override fun setNavigationChangeListener(navigationChangeListener: BubbleNavigationChangeListener) {
         this.navigationChangeListener = navigationChangeListener
     }
 
-    /**
-     * Set the [Typeface] for the Text Elements of the View
-     *
-     * @param typeface to be used
-     */
+
     override fun setTypeface(typeface: Typeface) {
         if (bubbleNavItems != null) {
             for (btv in bubbleNavItems!!)
@@ -226,11 +178,7 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
         }
     }
 
-    /**
-     * Sets the current active item
-     *
-     * @param position current position change
-     */
+
     override fun setCurrentActiveItem(position: Int) {
 
         if (bubbleNavItems == null) {
@@ -247,12 +195,7 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
         btv.performClick()
     }
 
-    /**
-     * Sets the badge value
-     *
-     * @param position current position change
-     * @param value    value to be set in the badge
-     */
+
     override fun setBadgeValue(position: Int, value: String?) {
         if (bubbleNavItems != null) {
             val btv = bubbleNavItems!![position]
@@ -266,7 +209,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
     }
 
     override fun onClick(v: View) {
-        Log.d("TAAG", "click was made")
         val changedPosition = getItemPositionById(v.id)
         if (changedPosition >= 0) {
             if (changedPosition == currentActiveItemPosition) {
@@ -279,7 +221,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
             if (newActiveToggleView != null)
                 newActiveToggleView!!.toggle()
 
-            //changed the current active position
             currentActiveItemPosition = changedPosition
 
             if (navigationChangeListener != null)
@@ -291,7 +232,6 @@ class BubbleNavigationLinearView : LinearLayout, View.OnClickListener, IBubbleNa
 
     companion object {
 
-        //constants
         private val TAG = "BNLView"
         private val MIN_ITEMS = 2
         private val MAX_ITEMS = 5

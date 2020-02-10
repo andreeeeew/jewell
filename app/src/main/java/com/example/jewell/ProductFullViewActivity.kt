@@ -23,7 +23,6 @@ class ProductFullViewActivity: AppCompatActivity() {
                     lifecycleOwner = this@ProductFullViewActivity
 
                 }
-//        setContentView(R.layout.product_full_view_item)
 
         supportActionBar?.setDisplayShowHomeEnabled(true)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
@@ -37,9 +36,6 @@ class ProductFullViewActivity: AppCompatActivity() {
         if (intent.hasExtra("product")) {
             product = intent.extras?.get("product") as ProductViewModel
             Log.d("ASD", "Product address in ProductFullViewActivity is ${System.identityHashCode(product)}")
-//            product.type.observe(this, Observer {
-//                Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
-//            })
             Log.d(TAG, "Product type is ${product.getType()}")
             binding.product = product
             bind(product)
@@ -48,7 +44,6 @@ class ProductFullViewActivity: AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Log.d("ASD", "Activity was destroyed. product is ${product.getType()}")
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
